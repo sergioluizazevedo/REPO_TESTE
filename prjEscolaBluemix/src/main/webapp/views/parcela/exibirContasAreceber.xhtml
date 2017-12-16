@@ -5,13 +5,18 @@
 	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="conteudo">
 		<h:body>
-			<h:form>
-				<p:panel header="Suas Contas a Receber" style="margin-bottom:10px;">
-					<p:dataTable var="parcela" value="#{parcelaBean.parcelas}"
-						rows="10" paginator="true"
+			<h:form id ="form">
+				<p:panel header="Suas Contas a Receber" >
+					<p:dataTable id="checkboxDT" var="parcela"
+						value="#{parcelaBean.parcelas}"
+						selection="#{parcelaBean.parcelaSelecionada}"
+						rowKey="#{parcela.id}" rows="10" paginator="true"
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 						rowsPerPageTemplate="5,10,15">
 
+						<f:facet name="header">
+            			Checkbox
+        				</f:facet>
 						<p:column headerText="ID da Parcela" width="1%">
 							<h:outputText value="#{parcela.id}" />
 						</p:column>
@@ -76,6 +81,10 @@
 								<f:convertNumber type="currency" locale="pt_BR" />
 							</h:outputText>
 						</p:column>
+						<f:facet name="footer">
+							<p:commandButton process="checkboxDT" icon="ui-icon-search"
+								value="View" action="#{parcelaBean.baixarContaAreceber()}"/>
+						</f:facet>
 					</p:dataTable>
 				</p:panel>
 			</h:form>
