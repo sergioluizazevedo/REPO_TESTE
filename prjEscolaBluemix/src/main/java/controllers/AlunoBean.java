@@ -51,7 +51,7 @@ public class AlunoBean {
 			AlunoDao alunoDao = new AlunoDao();
 			alunoDao.salvar(this.aluno);
 			System.out.println("Chamando o método salvar na classe AlunoDao");
-			FacesMessage msg = new FacesMessage("O aluno foi cadastrado na turma:" + this.aluno.getTurma().getId());
+			FacesMessage msg = new FacesMessage("O aluno foi cadastrado com sucesso!");
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 			System.out.println("Id adicionado = " + this.aluno.getId());
 			this.alunoCadastrado = new Aluno();

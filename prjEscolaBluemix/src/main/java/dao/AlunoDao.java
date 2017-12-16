@@ -20,9 +20,9 @@ public class AlunoDao {
 	private static String dataInicio;
 	private static String dataFinal;
 
-	private static final String SQL_SALVAR = "insert into tb_aluno (idTurma, nome, cpf, rg, orgaoExp, ufRg, sexo, dataNascimento, email, celular, telefone, pai, mae, cep, endereco, bairro, cidade, estado, status) value(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	private static final String SQL_SALVAR = "insert into tb_aluno (nome, cpf, rg, orgaoExp, ufRg, sexo, dataNascimento, email, celular, telefone, pai, mae, cep, endereco, bairro, cidade, estado, status) value(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String SQL_MATRICULAR = "insert into tb_parcela (idAluno,qtdTotalDeParcela,numeroDaParcelaCurso,numeroDaParcelaMaterial,dataVencimento,valorPago,dataPagamento,valorParcelaCurso,valorParcelaMaterial,valorTotalParcelado)value(?,?,?,?,?,?,?,?,?,?)";
-	private static final String ATUALIZA_APOS_MATRICULAR = "update tb_aluno set valorTaxaMatricula=?,valorCurso=?,porCentoDesconto=?,qtdParcelasCurso=?,valorMaterial=?,qtdParcelasMaterial=?,valorDescontoReais=?,valorCursoComDesconto=?,valorResidualParcelaCurso=?,valorResidualParcelaMaterial=?,dataMatricula=?,diaVencimento=?,formaDePagamento=?, status=?, matricula=?, dataCancelamento=? where id =?";
+	private static final String ATUALIZA_APOS_MATRICULAR = "update tb_aluno set valorTaxaMatricula=?,valorCurso=?,porCentoDesconto=?,qtdParcelasCurso=?,valorMaterial=?,qtdParcelasMaterial=?,valorDescontoReais=?,valorCursoComDesconto=?,valorResidualParcelaCurso=?,valorResidualParcelaMaterial=?,dataMatricula=?,diaVencimento=?,formaDePagamento=?, status=?, matricula=?, idTurma=? where id =?";
 	private static final String SQL_BUSCAR_BY_ID = "select id, matricula, idTurma, nome, cpf, rg, orgaoExp, ufRg, sexo, dataNascimento, email, celular, telefone, pai, mae, cep, endereco, bairro, cidade, estado, status, dataMatricula from tb_aluno where id=?";
 	private static final String SQL_BUSCAR_BY_NOME = "select id, matricula, idTurma, nome, cpf, rg, orgaoExp, ufRg, sexo, dataNascimento, email, celular, telefone, pai, mae, cep, endereco, bairro, cidade, estado, status from tb_aluno where nome=?";
 	private static final String SQL_BUSCAR_DEBITO = "select valorPago from tb_parcela where idAluno =?";
@@ -31,6 +31,7 @@ public class AlunoDao {
 	private static final String SQL_ATUALIZAR = "update tb_aluno set nome=?, cpf=?, rg=?, orgaoExp=?, ufRg=?, sexo=?, dataNascimento=?, email=?, celular=?, telefone=?, pai=?, mae=?, cep=?, endereco=?, bairro=?, cidade=?, estado=? where id=?";
 	private static final String SQL_BUSCAR_CONTAS_A_RECEBER = "select tb_parcela.id, tb_parcela.idAluno, tb_aluno.matricula, tb_aluno.nome, tb_parcela.QtdTotalDeParcela, tb_parcela.numeroDaParcelaCurso, tb_parcela.numeroDaParcelaMaterial, tb_parcela.dataVencimento, tb_parcela.valorPago, tb_parcela.dataPagamento, tb_parcela.ValorParcelaCurso, tb_parcela.ValorParcelaMaterial, tb_parcela.valorTotalParcelado from tb_aluno, tb_parcela where tb_aluno.id = tb_parcela.idAluno and tb_parcela.dataVencimento >="
 			+ dataInicio + " and tb_parcela.dataVencimento <=" + dataFinal + " order by dataVencimento";
+
 	// private static final String SQL_BUSCAR_CONTAS_A_RECEBER = "select
 	// tb_parcela.ID,tb_parcela.idAluno,tb_aluno.matricula, tb_aluno.nome,
 	// tb_parcela.QtdTotalDeParcela,tb_parcela.numeroDaParcelaCurso,
@@ -59,28 +60,27 @@ public class AlunoDao {
 
 	public void salvar(Aluno aluno) {
 		try {
-			stm = conexao.prepareStatement(SQL_SALVAR, PreparedStatement.RETURN_GENERATED_KEYS);
-			stm.setInt(1, aluno.getTurma().getId());
-			stm.setString(2, aluno.getNome());
-			stm.setString(3, aluno.getCpf());
-			stm.setString(4, aluno.getRg());
-			stm.setString(5, aluno.getOrgaoExp());
-			stm.setString(6, aluno.getUfRg());
-			stm.setString(7, aluno.getSexo());
+			stm = conexao.prepareStatement(SQL_SALVAR, PreparedStatement.RETURN_GENERATED_KEYS);			
+			stm.setString(1, aluno.getNome());
+			stm.setString(2, aluno.getCpf());
+			stm.setString(3, aluno.getRg());
+			stm.setString(4, aluno.getOrgaoExp());
+			stm.setString(5, aluno.getUfRg());
+			stm.setString(6, aluno.getSexo());
 
-			stm.setDate(8, new Date(aluno.getDataNascimento().getTime()));
-			stm.setString(9, aluno.getEmail());
-			stm.setString(10, aluno.getCelular());
-			stm.setString(11, aluno.getTelefone());
-			stm.setString(12, aluno.getPai());
-			stm.setString(13, aluno.getMae());
-			stm.setString(14, aluno.getCep());
-			stm.setString(15, aluno.getEndereco());
-			stm.setString(16, aluno.getBairro());
-			stm.setString(17, aluno.getCidade());
-			stm.setString(18, aluno.getEstado());
+			stm.setDate(7, new Date(aluno.getDataNascimento().getTime()));
+			stm.setString(8, aluno.getEmail());
+			stm.setString(9, aluno.getCelular());
+			stm.setString(10, aluno.getTelefone());
+			stm.setString(11, aluno.getPai());
+			stm.setString(12, aluno.getMae());
+			stm.setString(13, aluno.getCep());
+			stm.setString(14, aluno.getEndereco());
+			stm.setString(15, aluno.getBairro());
+			stm.setString(16, aluno.getCidade());
+			stm.setString(17, aluno.getEstado());
 			aluno.setStatus("Não Matriculado");
-			stm.setString(19, aluno.getStatus());
+			stm.setString(18, aluno.getStatus());
 
 			int linhas = stm.executeUpdate();
 			System.out.println("Foram modificadas, " + linhas + " com sucesso!");
@@ -106,198 +106,226 @@ public class AlunoDao {
 	}
 
 	public void matricular(Aluno aluno) {
-		boolean temParcelaDeCurso, temParcelaDeMaterial;
 
-		int qtdTotalDeParcela = 0, numeroDaParcelaCurso, numeroDaParcelaMaterial = 0, diferenca;
+		try {
+			stm = conexao.prepareStatement("select id, status from tb_aluno where id =?");
+			stm.setInt(1, aluno.getId());
+			rs = stm.executeQuery();
 
-		Calendar dataVencimento, proximoVencimento = null, dataPagamento, dataMatricula = null, dataCancelamento = null;
+			if (rs.next()) {
+				System.out.println("Encontrou");
+				if (rs.getString("status").equals("Matriculado")) {
+					System.out.println("Aluno já matriculado");
+					throw new Exception("Aluno já matriculado");
+				} else {
 
-		BigDecimal valorPago, valorParcelaCurso, valorParcelaMaterial, valorParcela, valorTotalParcelado = null;
+					boolean temParcelaDeCurso, temParcelaDeMaterial;
 
-		// configurando o aluno com desconto obtido em reais e o valor do curso com
-		// desconto.
-		aluno.setValorDescontoReais(aluno.getValorCurso().multiply(
-				new BigDecimal(aluno.getPorCentoDesconto()).divide(new BigDecimal("100"), 2, BigDecimal.ROUND_DOWN)));
-		aluno.setValorCursoComDesconto(aluno.getValorCurso().subtract(aluno.getValorDescontoReais()));
+					int qtdTotalDeParcela = 0, numeroDaParcelaCurso, numeroDaParcelaMaterial = 0, diferenca;
 
-		// calculando o valor da parcela do curso e da parcela do material
-		valorParcelaCurso = aluno.getValorCursoComDesconto().divide(new BigDecimal(aluno.getQtdParcelasCurso()), 2,
-				BigDecimal.ROUND_DOWN);
-		valorParcelaMaterial = aluno.getValorMaterial().divide(new BigDecimal(aluno.getQtdParcelasMaterial()), 2,
-				BigDecimal.ROUND_DOWN);
+					Calendar dataVencimento, proximoVencimento = null, dataPagamento, dataMatricula = null,
+							dataCancelamento = null;
 
-		// O residual da parcela do curso é igual ao valor do curso com desconto - valor
-		// da parcela do curso multiplicado pela qtd de parcelas do curso
-		aluno.setValorResidualParcelaCurso(aluno.getValorCursoComDesconto()
-				.subtract(valorParcelaCurso.multiply(new BigDecimal(aluno.getQtdParcelasCurso()))));
-		aluno.setValorResidualParcelaMaterial(aluno.getValorMaterial()
-				.subtract(valorParcelaMaterial.multiply(new BigDecimal(aluno.getQtdParcelasMaterial()))));
+					BigDecimal valorPago, valorParcelaCurso, valorParcelaMaterial, valorParcela,
+							valorTotalParcelado = null;
 
-		valorTotalParcelado = aluno.getValorCurso().add(
-				aluno.getValorTaxaMatricula().add(aluno.getValorMaterial().subtract(aluno.getValorDescontoReais())));
+					// configurando o aluno com desconto obtido em reais e o valor do curso com
+					// desconto.
+					aluno.setValorDescontoReais(
+							aluno.getValorCurso().multiply(new BigDecimal(aluno.getPorCentoDesconto())
+									.divide(new BigDecimal("100"), 2, BigDecimal.ROUND_DOWN)));
+					aluno.setValorCursoComDesconto(aluno.getValorCurso().subtract(aluno.getValorDescontoReais()));
 
-		for (int i = 1; (i <= aluno.getQtdParcelasCurso() || i <= aluno.getQtdParcelasMaterial() + 1); i++) {
-			System.out.println("Parcela #" + i);
-			qtdTotalDeParcela = i;
-			valorParcela = new BigDecimal(0.00);
-			// Enquanto existir parcelas de curso, vou saber o numero da parcela do curo e
-			// o valor da parcela
-			if (i <= aluno.getQtdParcelasCurso()) {
-				temParcelaDeCurso = true;
-				numeroDaParcelaCurso = i;
-				valorParcela = valorParcela.add(valorParcelaCurso);
+					// calculando o valor da parcela do curso e da parcela do material
+					valorParcelaCurso = aluno.getValorCursoComDesconto()
+							.divide(new BigDecimal(aluno.getQtdParcelasCurso()), 2, BigDecimal.ROUND_DOWN);
+					valorParcelaMaterial = aluno.getValorMaterial()
+							.divide(new BigDecimal(aluno.getQtdParcelasMaterial()), 2, BigDecimal.ROUND_DOWN);
 
-				// Se for a ultima parcela do curso, adicionar ao valor da parcela o residual na
-				// última parcela
-				if (i == aluno.getQtdParcelasCurso())
-					valorParcela = valorParcela.add(aluno.getValorResidualParcelaCurso());
+					// O residual da parcela do curso é igual ao valor do curso com desconto - valor
+					// da parcela do curso multiplicado pela qtd de parcelas do curso
+					aluno.setValorResidualParcelaCurso(aluno.getValorCursoComDesconto()
+							.subtract(valorParcelaCurso.multiply(new BigDecimal(aluno.getQtdParcelasCurso()))));
+					aluno.setValorResidualParcelaMaterial(aluno.getValorMaterial()
+							.subtract(valorParcelaMaterial.multiply(new BigDecimal(aluno.getQtdParcelasMaterial()))));
 
-			} else {
-				// Se não exisitir mais parcelas de curso, zero o valor da minha parcela e o
-				// numero da parcela do curso.
-				// valorParcelaCurso = new BigDecimal(0.00);
-				// valorParcela = new BigDecimal(0);
-				numeroDaParcelaCurso = 0;
-				temParcelaDeCurso = false;
+					valorTotalParcelado = aluno.getValorCurso().add(aluno.getValorTaxaMatricula()
+							.add(aluno.getValorMaterial().subtract(aluno.getValorDescontoReais())));
 
-			}
+					for (int i = 1; (i <= aluno.getQtdParcelasCurso()
+							|| i <= aluno.getQtdParcelasMaterial() + 1); i++) {
+						System.out.println("Parcela #" + i);
+						qtdTotalDeParcela = i;
+						valorParcela = new BigDecimal(0.00);
+						// Enquanto existir parcelas de curso, vou saber o numero da parcela do curo e
+						// o valor da parcela
+						if (i <= aluno.getQtdParcelasCurso()) {
+							temParcelaDeCurso = true;
+							numeroDaParcelaCurso = i;
+							valorParcela = valorParcela.add(valorParcelaCurso);
 
-			// se for a 1a parcela, adicionar a taxa de matricula datas e pagamentos
-			if (i == 1) {
-				// Providenciar Datas
-				dataVencimento = Calendar.getInstance();
-				dataPagamento = Calendar.getInstance();
-				aluno.setDataMatricula(new java.util.Date());
-				proximoVencimento = Calendar.getInstance(); // referencia a data atual
-				proximoVencimento.set(Calendar.DAY_OF_MONTH, aluno.getDiaVencimento()); // dia que ele escolheu
+							// Se for a ultima parcela do curso, adicionar ao valor da parcela o residual na
+							// última parcela
+							if (i == aluno.getQtdParcelasCurso())
+								valorParcela = valorParcela.add(aluno.getValorResidualParcelaCurso());
 
-				/*
-				 * calcular a diferença de dias entre hoje e o dia informado pelo usuário...
-				 * considerando que o usuário pode escolher entre 1 e 28 como dias válidos!!!
-				 * Exemplo 1: usuario informa 28, hoje é 30, resultado -2 => valor absoluto 2
-				 * Exemplo 2: usuario informa 5, hoje é 30, resultado -25 => valor absoluto 25
-				 */
+						} else {
+							// Se não exisitir mais parcelas de curso, zero o valor da minha parcela e o
+							// numero da parcela do curso.
+							// valorParcelaCurso = new BigDecimal(0.00);
+							// valorParcela = new BigDecimal(0);
+							numeroDaParcelaCurso = 0;
+							temParcelaDeCurso = false;
 
-				// subtrai o dia de vencimento - a data atual. Por exempo dia vencimento 10 e
-				// dia atual 20. Se subtrair 10-20 o resultado será negativo, por isso usamos o
-				// método abs, para termos um valor inteiro
-				diferenca = Math.abs(aluno.getDiaVencimento() - Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+						}
 
-				if (diferenca >= 20)
-					proximoVencimento.add(Calendar.MONTH, 1); // 30 dias adicionais
+						// se for a 1a parcela, adicionar a taxa de matricula datas e pagamentos
+						if (i == 1) {
+							// Providenciar Datas
+							dataVencimento = Calendar.getInstance();
+							dataPagamento = Calendar.getInstance();
+							aluno.setDataMatricula(new java.util.Date());
+							proximoVencimento = Calendar.getInstance(); // referencia a data atual
+							proximoVencimento.set(Calendar.DAY_OF_MONTH, aluno.getDiaVencimento()); // dia que ele
+																									// escolheu
 
-				// if (aluno.getQtdParcelasCurso().intValue() == 0)
-				if (!temParcelaDeCurso)
-					valorParcela = valorParcela.add(aluno.getValorCursoComDesconto());
+							/*
+							 * calcular a diferença de dias entre hoje e o dia informado pelo usuário...
+							 * considerando que o usuário pode escolher entre 1 e 28 como dias válidos!!!
+							 * Exemplo 1: usuario informa 28, hoje é 30, resultado -2 => valor absoluto 2
+							 * Exemplo 2: usuario informa 5, hoje é 30, resultado -25 => valor absoluto 25
+							 */
 
-				valorParcela = valorParcela.add(aluno.getValorTaxaMatricula());
+							// subtrai o dia de vencimento - a data atual. Por exempo dia vencimento 10 e
+							// dia atual 20. Se subtrair 10-20 o resultado será negativo, por isso usamos o
+							// método abs, para termos um valor inteiro
+							diferenca = Math
+									.abs(aluno.getDiaVencimento() - Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
-				valorPago = valorParcela;
+							if (diferenca >= 20)
+								proximoVencimento.add(Calendar.MONTH, 1); // 30 dias adicionais
 
-				// configurar a matricula do aluno
-				Calendar cal = Calendar.getInstance();
-				aluno.setMatricula(String.valueOf(cal.get(Calendar.YEAR)) + String.valueOf(aluno.getTurma())
-						+ String.valueOf(aluno.getId()));
+							// if (aluno.getQtdParcelasCurso().intValue() == 0)
+							if (!temParcelaDeCurso)
+								valorParcela = valorParcela.add(aluno.getValorCursoComDesconto());
 
-				aluno.setStatus("Matriculado");
-			} else {
-				proximoVencimento.add(Calendar.MONTH, 1); // mais 30 dias
-				dataVencimento = proximoVencimento;
-				dataPagamento = null;
-				valorPago = new BigDecimal(0);
-			}
+							valorParcela = valorParcela.add(aluno.getValorTaxaMatricula());
 
-			// Enquanto existir parcelas de material, vou saber o numero da parcela do
-			// material e
-			// a parcela receberá o valor do material
+							valorPago = valorParcela;
 
-			if (i > 1 && i <= aluno.getQtdParcelasMaterial() + 1) {
-				temParcelaDeMaterial = true;
-				numeroDaParcelaMaterial = i - 1;
-				valorParcela = valorParcela.add(valorParcelaMaterial);
-				// parcelaMaterialFinal = valorParcelaMaterial;
+							// configurar a matricula do aluno
+							Calendar cal = Calendar.getInstance();
+							aluno.setMatricula(String.valueOf(cal.get(Calendar.YEAR))
+									+ String.valueOf(aluno.getTurma().getId()) + String.valueOf(aluno.getId()));
 
-				// acrescentar o residual na última parcela
-				if (i == aluno.getQtdParcelasMaterial() + 1)
-					valorParcela = valorParcela.add(aluno.getValorResidualParcelaMaterial());
+							aluno.setStatus("Matriculado");
+						} else {
+							proximoVencimento.add(Calendar.MONTH, 1); // mais 30 dias
+							dataVencimento = proximoVencimento;
+							dataPagamento = null;
+							valorPago = new BigDecimal(0);
+						}
 
-			} else {
-				numeroDaParcelaMaterial = 0;
-				temParcelaDeMaterial = false;
-				// parcelaMaterialFinal = new BigDecimal(0.00);
-			}
+						// Enquanto existir parcelas de material, vou saber o numero da parcela do
+						// material e
+						// a parcela receberá o valor do material
 
-			try {
-				stm = conexao.prepareStatement(SQL_MATRICULAR, PreparedStatement.RETURN_GENERATED_KEYS);
-				stm.setInt(1, aluno.getId());
-				stm.setInt(2, qtdTotalDeParcela);
-				stm.setInt(3, numeroDaParcelaCurso);
-				stm.setInt(4, numeroDaParcelaMaterial);
-				stm.setDate(5, new java.sql.Date(dataVencimento.getTimeInMillis()));
-				stm.setBigDecimal(6, valorPago);
+						if (i > 1 && i <= aluno.getQtdParcelasMaterial() + 1) {
+							temParcelaDeMaterial = true;
+							numeroDaParcelaMaterial = i - 1;
+							valorParcela = valorParcela.add(valorParcelaMaterial);
+							// parcelaMaterialFinal = valorParcelaMaterial;
 
-				if (dataPagamento == null)
-					stm.setDate(7, null);
-				else
-					stm.setDate(7, new java.sql.Date(dataPagamento.getTimeInMillis()));
+							// acrescentar o residual na última parcela
+							if (i == aluno.getQtdParcelasMaterial() + 1)
+								valorParcela = valorParcela.add(aluno.getValorResidualParcelaMaterial());
 
-				if (temParcelaDeCurso)
-					stm.setBigDecimal(8, valorParcelaCurso);
-				else
-					stm.setBigDecimal(8, new BigDecimal(0.00));
+						} else {
+							numeroDaParcelaMaterial = 0;
+							temParcelaDeMaterial = false;
+							// parcelaMaterialFinal = new BigDecimal(0.00);
+						}
 
-				if (temParcelaDeMaterial)
-					stm.setBigDecimal(9, valorParcelaMaterial);
-				else
-					stm.setBigDecimal(9, new BigDecimal(0.00));
+						try {
+							stm = conexao.prepareStatement(SQL_MATRICULAR, PreparedStatement.RETURN_GENERATED_KEYS);
+							stm.setInt(1, aluno.getId());
+							stm.setInt(2, qtdTotalDeParcela);
+							stm.setInt(3, numeroDaParcelaCurso);
+							stm.setInt(4, numeroDaParcelaMaterial);
+							stm.setDate(5, new java.sql.Date(dataVencimento.getTimeInMillis()));
+							stm.setBigDecimal(6, valorPago);
 
-				stm.setBigDecimal(10, valorParcela);
+							if (dataPagamento == null)
+								stm.setDate(7, null);
+							else
+								stm.setDate(7, new java.sql.Date(dataPagamento.getTimeInMillis()));
 
-				int linhas = stm.executeUpdate();
+							if (temParcelaDeCurso)
+								stm.setBigDecimal(8, valorParcelaCurso);
+							else
+								stm.setBigDecimal(8, new BigDecimal(0.00));
 
-				System.out.println("Foram modificadas, " + linhas + " com sucesso!");
-			} catch (Exception e) {
-				System.out.println("Ocorreu algum erro no metodo matricular");
-				e.printStackTrace();
-				throw new RuntimeException(e);
-			}
+							if (temParcelaDeMaterial)
+								stm.setBigDecimal(9, valorParcelaMaterial);
+							else
+								stm.setBigDecimal(9, new BigDecimal(0.00));
 
-			// inserir no banco
-			if (i == 1) {
-				try {
-					stm = conexao.prepareStatement(ATUALIZA_APOS_MATRICULAR);
-					stm.setBigDecimal(1, aluno.getValorTaxaMatricula());
-					stm.setBigDecimal(2, aluno.getValorCurso());
-					stm.setInt(3, aluno.getPorCentoDesconto());
-					stm.setInt(4, aluno.getQtdParcelasCurso());
-					stm.setBigDecimal(5, aluno.getValorMaterial());
-					stm.setInt(6, aluno.getQtdParcelasMaterial());
-					stm.setBigDecimal(7, aluno.getValorDescontoReais());
-					stm.setBigDecimal(8, aluno.getValorCursoComDesconto());
-					stm.setBigDecimal(9, aluno.getValorResidualParcelaCurso());
-					stm.setBigDecimal(10, aluno.getValorResidualParcelaMaterial());
-					stm.setDate(11, new java.sql.Date(aluno.getDataMatricula().getTime()));
-					stm.setInt(12, aluno.getDiaVencimento());
-					stm.setString(13, aluno.getFormaDePagamento());
-					stm.setString(14, aluno.getStatus());
-					stm.setString(15, aluno.getMatricula());
+							stm.setBigDecimal(10, valorParcela);
 
-					if (dataCancelamento == null)
-						stm.setDate(16, null);
-					else
-						stm.setDate(16, new java.sql.Date(dataCancelamento.getTimeInMillis()));
-					stm.setInt(17, aluno.getId());
+							int linhas = stm.executeUpdate();
 
-					int linhas = stm.executeUpdate();
-					System.out.println("Foram modificadas, " + linhas + " com sucesso!");
-				} catch (Exception e) {
-					System.out.println("Ocorreu algum erro na tentativa de rodar o SQL ATUALIZAR_APOS_MATRICULAR");
-					e.printStackTrace();
-					throw new RuntimeException(e);
+							System.out.println("Foram modificadas, " + linhas + " com sucesso!");
+						} catch (Exception e) {
+							System.out.println("Ocorreu algum erro no metodo matricular");
+							e.printStackTrace();
+							throw new RuntimeException(e);
+						}
+
+						// atualizar no banco
+						if (i == 1) {
+							try {
+								stm = conexao.prepareStatement(ATUALIZA_APOS_MATRICULAR);
+								stm.setBigDecimal(1, aluno.getValorTaxaMatricula());
+								stm.setBigDecimal(2, aluno.getValorCurso());
+								stm.setInt(3, aluno.getPorCentoDesconto());
+								stm.setInt(4, aluno.getQtdParcelasCurso());
+								stm.setBigDecimal(5, aluno.getValorMaterial());
+								stm.setInt(6, aluno.getQtdParcelasMaterial());
+								stm.setBigDecimal(7, aluno.getValorDescontoReais());
+								stm.setBigDecimal(8, aluno.getValorCursoComDesconto());
+								stm.setBigDecimal(9, aluno.getValorResidualParcelaCurso());
+								stm.setBigDecimal(10, aluno.getValorResidualParcelaMaterial());
+								stm.setDate(11, new java.sql.Date(aluno.getDataMatricula().getTime()));
+								stm.setInt(12, aluno.getDiaVencimento());
+								stm.setString(13, aluno.getFormaDePagamento());
+								stm.setString(14, aluno.getStatus());
+								
+								stm.setString(15, aluno.getMatricula());
+								stm.setInt(16, aluno.getTurma().getId());
+								
+								stm.setInt(17, aluno.getId());
+
+								int linhas = stm.executeUpdate();
+								System.out.println("Foram modificadas, " + linhas + " com sucesso!");
+							} catch (Exception e) {
+								System.out.println(
+										"Ocorreu algum erro na tentativa de rodar o SQL ATUALIZAR_APOS_MATRICULAR");
+								e.printStackTrace();
+								throw new RuntimeException(e);
+							}
+						}
+
+					}
+
 				}
 			}
 
+		} catch (Exception e) {
+			System.out.println("Ocorreu algum erro no metodo matricular na hora de pesquisar o status do aluno");
+			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
+
 		ConnectionFactory.closeAll(conexao, stm, rs);
 	}
 
@@ -488,7 +516,7 @@ public class AlunoDao {
 	}
 
 	public List<Parcela> buscarContasaReceber(java.util.Date dataInicio, java.util.Date dataFinal) {
-		
+
 		AlunoDao.dataInicio = dataInicio.toString();
 		AlunoDao.dataFinal = dataFinal.toString();
 		Parcela parcela = null;
