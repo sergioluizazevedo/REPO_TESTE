@@ -18,10 +18,6 @@
 							<h:panelGrid columns="2" columnClasses="label, value"
 								styleClass="grid">
 
-								<h:outputText value="Id da Turma:* " />
-								<p:inputText value="#{alunoBean.aluno.turma.id}" required="true"
-									label="id" />
-
 								<h:outputText value="Nome da Aluno" />
 								<p:inputText value="#{alunoBean.aluno.nome}" label="nome"
 									required="true" />
@@ -93,10 +89,6 @@
 					<p:tab id="confirmar" title="Confirmar Dados">
 						<p:panel header="Adicionando Aluno" style="margin-bottom:10px;">
 							<h:panelGrid columns="2" columnClasses="label, value">
-
-								<h:outputText value="Id da Turma:" />
-								<p:inputText value="#{alunoBean.aluno.turma.id}" label="id"
-									readonly="true" />
 
 								<h:outputText value="Nome da Aluno" />
 								<p:inputText value="#{alunoBean.aluno.nome}" label="nome"

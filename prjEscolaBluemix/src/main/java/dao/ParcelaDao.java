@@ -54,7 +54,7 @@ public class ParcelaDao {
 			stm = conexao.prepareStatement(
 					"select tb_parcela.id, tb_parcela.idAluno, tb_aluno.matricula, tb_aluno.nome, tb_parcela.QtdTotalDeParcela, tb_parcela.numeroDaParcelaCurso, tb_parcela.numeroDaParcelaMaterial, tb_parcela.dataVencimento, tb_parcela.valorPago, tb_parcela.dataPagamento, tb_parcela.ValorParcelaCurso, tb_parcela.ValorParcelaMaterial, tb_parcela.valorTotalParcelado from tb_aluno, tb_parcela where tb_aluno.id = tb_parcela.idAluno and tb_parcela.dataVencimento >= "
 							+ "'" + sdf.format(periodo.getDataInicio()) + "'" + " and tb_parcela.dataVencimento <= "
-							+ "'" + sdf.format(periodo.getDataFinal()) + "'" + " order by dataVencimento, tb_aluno.nome");
+							+ "'" + sdf.format(periodo.getDataFinal()) + "'" + " order by dataVencimento");
 			rs = stm.executeQuery();
 
 			while (rs.next()) {
@@ -120,7 +120,7 @@ public class ParcelaDao {
 			stm = conexao.prepareStatement(
 					"select tb_parcela.id, tb_parcela.idAluno, tb_aluno.matricula, tb_aluno.nome, tb_parcela.QtdTotalDeParcela, tb_parcela.numeroDaParcelaCurso, tb_parcela.numeroDaParcelaMaterial, tb_parcela.dataVencimento, tb_parcela.valorPago, tb_parcela.dataPagamento, tb_parcela.ValorParcelaCurso, tb_parcela.ValorParcelaMaterial, tb_parcela.valorTotalParcelado from tb_aluno, tb_parcela where tb_aluno.id = tb_parcela.idAluno and tb_parcela.dataVencimento >= "
 							+ "'" + sdf.format(periodo.getDataInicio()) + "'" + " and tb_parcela.dataVencimento <= "
-							+ "'" + sdf.format(periodo.getDataFinal()) + "'" + " order by tb_parcela.dataVencimento, tb_aluno.nome");
+							+ "'" + sdf.format(periodo.getDataFinal()) + "'" + " order by dataVencimento");
 			rs = stm.executeQuery();
 
 			while (rs.next()) {
@@ -308,7 +308,7 @@ public class ParcelaDao {
 
 		try {
 			stm = conexao.prepareStatement(
-					"select tb_parcela.id, tb_parcela.idAluno, tb_aluno.matricula, tb_aluno.nome, tb_parcela.QtdTotalDeParcela, tb_parcela.numeroDaParcelaCurso, tb_parcela.numeroDaParcelaMaterial, tb_parcela.dataVencimento, tb_parcela.valorPago, tb_parcela.dataPagamento, tb_parcela.ValorParcelaCurso, tb_parcela.ValorParcelaMaterial, tb_parcela.valorTotalParcelado from tb_aluno, tb_parcela where tb_aluno.id =? and tb_parcela.idAluno=? ");
+					"select tb_parcela.id, tb_parcela.idAluno, tb_aluno.matricula, tb_aluno.nome, tb_parcela.QtdTotalDeParcela, tb_parcela.numeroDaParcelaCurso, tb_parcela.numeroDaParcelaMaterial, tb_parcela.dataVencimento, tb_parcela.valorPago, tb_parcela.dataPagamento, tb_parcela.ValorParcelaCurso, tb_parcela.ValorParcelaMaterial, tb_parcela.valorTotalParcelado from tb_aluno, tb_parcela where tb_aluno.id =? and tb_parcela.idAluno=?");
 			stm.setInt(1, id);
 			stm.setInt(2, id);
 			rs = stm.executeQuery();
@@ -505,7 +505,7 @@ public class ParcelaDao {
 		BigDecimal valorPagoTeste = new BigDecimal("0.00");
 		try {
 			stm = conexao.prepareStatement(
-					"select tb_parcela.id, tb_parcela.idAluno, tb_aluno.matricula, tb_aluno.nome, tb_parcela.QtdTotalDeParcela, tb_parcela.numeroDaParcelaCurso, tb_parcela.numeroDaParcelaMaterial, tb_parcela.dataVencimento, tb_parcela.valorPago, tb_parcela.dataPagamento, tb_parcela.ValorParcelaCurso, tb_parcela.ValorParcelaMaterial, tb_parcela.valorTotalParcelado from tb_aluno, tb_parcela order by tb_parcela.dataPagamento, tb_aluno.nome");
+					"select tb_parcela.id, tb_parcela.idAluno, tb_aluno.matricula, tb_aluno.nome, tb_parcela.QtdTotalDeParcela, tb_parcela.numeroDaParcelaCurso, tb_parcela.numeroDaParcelaMaterial, tb_parcela.dataVencimento, tb_parcela.valorPago, tb_parcela.dataPagamento, tb_parcela.ValorParcelaCurso, tb_parcela.ValorParcelaMaterial, tb_parcela.valorTotalParcelado from tb_aluno, tb_parcela");
 			rs = stm.executeQuery();
 
 			while (rs.next()) {
