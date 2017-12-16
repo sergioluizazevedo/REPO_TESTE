@@ -6,6 +6,7 @@ import java.util.Date;
 public class Parcela {
 	private Periodo periodo;
 	private Aluno aluno;
+	Boolean estaPaga;
 	private Integer id;
 	private Integer qtdTotalDeParcela;
 	private Integer numeroDaParcelaCurso;
@@ -113,6 +114,16 @@ public class Parcela {
 	public void setPeriodo(Periodo periodo) {
 		this.periodo = periodo;
 	}
+
+	public Boolean getEstaPaga() {
+		return estaPaga;
+	}
+
+	public void setEstaPaga(Boolean estaPaga) {
+		this.estaPaga = estaPaga;
+	}
+	
+	
 	
 	
 

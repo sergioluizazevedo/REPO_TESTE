@@ -2,8 +2,10 @@ package controllers;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import dao.AlunoDao;
 import dao.ParcelaDao;
@@ -16,6 +18,7 @@ import model.Periodo;
 public class ParcelaBean {
 
 	private Parcela parcela;
+	private Parcela parcelaSelecionada;
 	private Aluno aluno;
 	private Periodo periodo;
 	private List<Parcela> parcelas;
@@ -138,6 +141,32 @@ public class ParcelaBean {
 	public String erroBuscarTodos(Exception ex) {
 		return "/views/parcela/erro.xhtml";
 	}
+	
+	public String baixarContaAreceber() {
+		System.out.println(this.parcelaSelecionada);
+		return "/views/parcela/contaRecebida.xhtml";
+		/*try {
+			Parcela parcelaDao = new ParcelaDao();
+			alunoDao.salvar(this.aluno);
+			System.out.println("Chamando o método salvar na classe AlunoDao");
+			FacesMessage msg = new FacesMessage("O aluno foi cadastrado na turma:" + this.aluno.getTurma().getId());
+			FacesContext.getCurrentInstance().addMessage(null, msg);
+			System.out.println("Id adicionado = " + this.aluno.getId());
+			this.alunoCadastrado = new Aluno();
+			this.alunoCadastrado = this.aluno;
+			return "/views/aluno/adicionado";
+
+		} catch (
+
+		Exception ex) {
+			System.out.println("[AlunoBean.adicionar] Ocorreu o erro: " + ex.getMessage());
+			this.ultimaExcecao = ex;
+
+			
+
+		}
+*/
+	}
 
 	public Periodo getPeriodo() {
 		return periodo;
@@ -178,5 +207,15 @@ public class ParcelaBean {
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
 	}
+
+	public Parcela getParcelaSelecionada() {
+		return parcelaSelecionada;
+	}
+
+	public void setParcelaSelecionada(Parcela parcelaSelecionada) {
+		this.parcelaSelecionada = parcelaSelecionada;
+	}
+	
+	
 
 }
