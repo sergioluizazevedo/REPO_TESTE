@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	
+	<h:head>
+		<meta charset="utf-8" />
+	
+		<!-- Declarando uma "variavel" para formar os links para as paginas nos itens de menu... -->
+		<!-- https://stackoverflow.com/questions/6878275/how-get-the-base-url -->
+		<!-- 
+		<c:set var="appBase" value="#{request.contextPath}/"
+			scope="application" />
+	 	-->
+	 
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+		<link rel="icon" href="imagens/escola.ico" />
+		
+		<title>Projeto Escola Web</title>
+	</h:head>
+	
+	<h:body>
+		<ui:include src="cabecalho.xhtml" />
+	
+		<ui:insert name="titulo" />
+		<ui:insert name="conteudo" />
+	
+		<ui:include src="rodape.xhtml" />
+	</h:body>
+</html>

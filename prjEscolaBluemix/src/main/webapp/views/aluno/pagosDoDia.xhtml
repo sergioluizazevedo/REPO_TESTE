@@ -1,0 +1,63 @@
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<f:metadata>
+		<f:viewAction action="#{alunoBean.buscarPagosNoDia}" />
+	</f:metadata>
+	<ui:define name="conteudo">
+		<h:body>
+			<h:form>
+				<p:dataTable var="relatorio" value="#{alunoBean.relatorios}"
+					rows="10" paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+
+					<p:column headerText="ID da Conta a Pagar" width="1%">
+						<h:outputText value="#{relatorio.id}" />
+					</p:column>
+
+					<p:column headerText="Aluno ID" width="1%">
+						<h:outputText value="#{relatorio.alunoId}" />
+					</p:column>
+
+					<p:column headerText="Matricula" width="1%">
+						<h:outputText value="#{relatorio.matricula}" />
+					</p:column>
+
+					<p:column headerText="Valor da Parcela Total" width="1%">
+						<h:outputText value="#{relatorio.valorParcela}">
+							<f:convertNumber type="currency" locale="pt_BR" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Vencimento" width="1%">
+						<h:outputText value="#{relatorio.dataVencimento.time}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Valor Pago" width="1%">
+						<h:outputText value="#{relatorio.valorPago}">
+							<f:convertNumber type="currency" locale="pt_BR" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Data Pagamento" width="1%">
+						<h:outputText value="#{relatorio.dataPagamento.time}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+
+
+					<p:column headerText="Status" width="1%">
+						<h:outputText value="#{relatorio.status}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

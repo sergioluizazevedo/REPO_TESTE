@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<meta charset="utf-8" />
+	<title>Unidade Localizada com Sucesso</title>
+</h:head>
+
+<h:body>
+	<h2>Sucesso!</h2>
+	<h3>A Unidade, #{unidadeBean.unidade.nome}, foi localizada com
+		sucesso</h3>
+	<hr />
+
+	<h2>Modificar Unidade</h2>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Id da Unidade" for="inputId" />
+			<h:inputText id="inputId" value="#{unidadeBean.unidade.id}"
+				disabled="true" />
+			<h:outputLabel value="Nome da Unidade" for="inputNome" />
+			<h:inputText id="inputNome" value="#{unidadeBean.unidade.nome}" />
+			<h:outputLabel value="Endereço da Unidade" for="inputEndereco" />
+			<h:inputText id="inputEndereco"
+				value="#{unidadeBean.unidade.endereco}" />
+			<h:outputLabel value="Data de Cadastro da Unidade" for="inputData" />
+			<h:inputText id="inputData"
+				value="#{unidadeBean.unidade.dataCadastro.time}" disabled="true">
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+			</h:inputText>
+			<h:outputLabel value="Status da Unidade" for="inputStatus" />
+			<h:inputText id="inputStatus" value="#{unidadeBean.unidade.status}"
+				disabled="true" />
+
+			<h:commandButton value="Modificar Dados"
+				action="#{unidadeBean.modificando()}">
+			</h:commandButton>
+
+		</h:panelGrid>
+	</h:form>
+	<hr />
+	<h:button value="Todas as Tarefas" outcome="/views/tarefas/unidade/tarefas.xhtml" />
+</h:body>
+</html>

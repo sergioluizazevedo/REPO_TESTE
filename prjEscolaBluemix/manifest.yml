@@ -1,0 +1,14 @@
+---
+applications:
+- name: prjEscolaBluemix
+  memory: 1024M
+  host: escolax
+  domain: mybluemix.net
+  env:
+    IBM_JVM_LICENSE: L-PMAA-A3Z8P2
+    IBM_LIBERTY_LICENSE: L-SWIS-AKWR6K
+    JBP_CONFIG_LIBERTY: 'app_archive: {features: [beanValidation-1.1, cdi-1.2, ejbLite-3.2,
+      el-3.0, jaxrs-2.0, jdbc-4.1, jndi-1.0, jpa-2.1, jsf-2.2, jsonp-1.0, jsp-2.3,
+      managedBeans-1.0, servlet-3.1, websocket-1.1]}'
+    JBP_CONFIG_IBMJDK: '[version: 1.8.+]'
+buildpack: https://github.com/cloudfoundry/ibm-websphere-liberty-buildpack.git

@@ -1,0 +1,117 @@
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="conteudo">
+		<h:body>
+			<h2>Aluno Modificado</h2>
+			<h3>O Aluno, #{alunoBean.alunoCadastrado.nome}, foi modificado
+				com sucesso</h3>
+
+			<h:form>
+				<p:panel id="panel" header="Aluno Modificado"
+					style="margin-bottom:10px;">
+					<h:panelGrid columns="2" cellpadding="5">
+
+						<h:outputText value="Id do Aluno:* " />
+						<p:inputText value="#{alunoBean.alunoCadastrado.id}"
+							label="idAluno" readonly="true" />
+
+						<h:outputText value="Matricula do Aluno:* " />
+						<p:inputText label="matricula"
+							value="#{alunoBean.alunoCadastrado.matricula}" readonly="true" />
+
+						<h:outputText value="Id da Turma:* " />
+						<p:inputText label="idTurma"
+							value="#{alunoBean.alunoCadastrado.turma.id}" readonly="true" />
+
+						<h:outputText value="Nome da Aluno" />
+						<p:inputText label="nome"
+							value="#{alunoBean.alunoCadastrado.nome}" readonly="true" />
+
+						<h:outputText value="cpf:" />
+						<p:inputMask label="cpf" value="#{alunoBean.alunoCadastrado.cpf}"
+							mask="999.999.999-99" readonly="true" />
+
+						<h:outputText value="rg" />
+						<p:inputMask label="rg" value="#{alunoBean.alunoCadastrado.rg}"
+							mask="99.999.999-9" readonly="true" />
+
+						<h:outputText value="orgaoExp" />
+						<p:inputText label="orgaoExp"
+							value="#{alunoBean.alunoCadastrado.orgaoExp}" readonly="true" />
+
+						<h:outputText value="ufRg" />
+						<p:inputText label="ufRg"
+							value="#{alunoBean.alunoCadastrado.ufRg}" readonly="true" />
+
+						<h:outputText value="sexo do Aluno" />
+						<p:inputText label="sexo"
+							value="#{alunoBean.alunoCadastrado.sexo}" readonly="true" />
+
+						<h:outputText value="Data Nascimento*:" />
+						<p:inputMask label="dataNascimento"
+							value="#{alunoBean.alunoCadastrado.dataNascimento}"
+							mask="99/99/9999" readonly="true">
+							<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+						</p:inputMask>
+
+						<h:outputText value="email:" />
+						<p:inputText label="email"
+							value="#{alunoBean.alunoCadastrado.email}" readonly="true" />
+
+						<h:outputText value="celular" />
+						<p:inputMask label="celular"
+							value="#{alunoBean.alunoCadastrado.celular}"
+							mask="(999)99999-9999" readonly="true" />
+
+						<h:outputText value="telefone" />
+						<p:inputMask label="telefone"
+							value="#{alunoBean.alunoCadastrado.telefone}"
+							mask="(999)9999-9999" readonly="true" />
+
+						<h:outputText value=" pai" />
+						<p:inputText label="pai" value="#{alunoBean.alunoCadastrado.pai}"
+							readonly="true" />
+
+						<h:outputText value="mae" />
+						<p:inputText label="mae" value="#{alunoBean.alunoCadastrado.mae}"
+							readonly="true" />
+
+						<h:outputText value="cep" />
+						<p:inputMask label="cep" value="#{alunoBean.alunoCadastrado.cep}"
+							mask="99999-999" readonly="true" />
+
+						<h:outputText value="endereco" />
+						<p:inputText label="endereco"
+							value="#{alunoBean.alunoCadastrado.endereco}" readonly="true" />
+
+						<h:outputText value="bairro" />
+						<p:inputText label="bairro"
+							value="#{alunoBean.alunoCadastrado.bairro}" readonly="true" />
+
+						<h:outputText value="cidade" />
+						<p:inputText label="cidade"
+							value="#{alunoBean.alunoCadastrado.cidade}" readonly="true" />
+
+						<h:outputText value="estado" />
+						<p:inputText label="estado"
+							value="#{alunoBean.alunoCadastrado.estado}" readonly="true" />
+
+						<h:outputText value="Status" />
+						<p:inputText label="status"
+							value="#{alunoBean.alunoCadastrado.status}" readonly="true" />
+
+						<h:outputText value="Data de Matricula *:" />
+						<p:inputMask value="#{alunoBean.alunoCadastrado.dataMatricula}"
+							label="dataMatricula;" mask="99/99/9999" readonly="true">
+							<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+						</p:inputMask>
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

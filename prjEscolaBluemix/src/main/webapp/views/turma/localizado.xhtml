@@ -1,0 +1,102 @@
+
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="conteudo">
+		<h:body>
+			<h2>Turma Localizada</h2>
+			<h3>O Turma, #{turmaBean.turma.nome}, foi localizada com sucesso</h3>
+			<h:form>
+				<p:growl id="growl" sticky="true" showDetail="true" />
+				<p:panel header="Turma Localizada" style="margin-bottom:10px;">
+					<p:messages />
+
+					<h:panelGrid columns="2" columnClasses="label, value">
+
+						<h:outputText value="Id do Unidade" />
+						<p:inputText value="#{turmaBean.turma.unidade.id}" required="true"
+							label="idUnidade" readonly="true" />
+
+						<h:outputText value="Id do Turma:* " />
+						<p:inputText value="#{turmaBean.turma.id}" required="true"
+							label="idTurma" readonly="true" />
+
+						<h:outputText value="Nome da Turma" />
+						<p:inputText value="#{turmaBean.turma.nome}" label="nome" />
+
+						<h:outputText value="Status da Turma" />
+						<p:inputText value="#{turmaBean.turma.status}" label="status"
+							readonly="true" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Modificar" action="#{turmaBean.modificar}"
+						ajax="false" update="growl" process="@this" />
+					<p:commandButton value="Desativar" action="#{turmaBean.desativar}"
+						ajax="false" update="growl" process="@this" />
+
+				</p:panel>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
+<!-- 
+
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="conteudo">
+		<h:body>
+			<h2>Turma Localizada</h2>
+			<h3>O Turma, #{turmaBean.turmaCadastrada.nome}, foi localizada
+				com sucesso</h3>
+			<h:form>
+				<p:growl id="growl" sticky="true" showDetail="true" />
+				<p:wizard flowListener="#{turmaBean.onFlowProcess}"
+					nextLabel="Avançar" backLabel="Voltar" styleClass="tabs">
+					<p:tab id="turma" title="Detalhes da Turma">
+						<p:panel header="Turma Localizada" style="margin-bottom:10px;">
+							<p:messages />
+							<h:panelGrid columns="2" columnClasses="label, value">
+								<h:outputText value="Id do Unidade" />
+								<p:inputText value="#{turmaBean.turmaCadastrada.unidade.id}"
+									required="true" label="idUnidade" readonly="true" />
+
+								<h:outputText value="Id do Turma:* " />
+								<p:inputText value="#{turmaBean.turmaCadastrada.id}"
+									required="true" label="idTurma" readonly="true" />
+
+								<h:outputText value="Nome da Turma" />
+								<p:inputText value="#{turmaBean.turmaCadastrada.nome}"
+									label="nome" />
+
+								<h:outputText value="Status da Turma" />
+								<p:inputText value="#{turmaBean.turmaCadastrada.status}"
+									label="status" readonly="true" />
+							</h:panelGrid>
+							<p:commandButton value="Modificar"
+								action="#{turmaBean.modificar}" ajax="false" update="growl"
+								process="@this" />
+							<p:commandButton value="Desativar"
+								action="#{turmaBean.desativar}" ajax="false" update="growl"
+								process="@this" />
+						</p:panel>
+					</p:tab>
+				</p:wizard>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
+
+
+ -->
+
+
+
+

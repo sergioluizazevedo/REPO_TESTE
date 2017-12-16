@@ -1,0 +1,53 @@
+
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="conteudo">
+		<h:body>
+			<h2>Unidade Localizada</h2>
+			<h3>O Unidade, #{unidadeBean.unidade.nome}, foi localizada com
+				sucesso</h3>
+			<h:form>
+				<p:growl id="growl" sticky="true" showDetail="true" />
+				<p:panel header="Unidade Localizada" style="margin-bottom:10px;">
+					<p:messages />
+					<h:panelGrid columns="2" columnClasses="label, value">
+
+						<h:outputText value="Id do Unidade:* " />
+						<p:inputText value="#{unidadeBean.unidade.id}" required="true"
+							label="idUnidade" readonly="true" />
+
+						<h:outputText value="Nome da Unidade" />
+						<p:inputText value="#{unidadeBean.unidade.nome}" label="nome" />
+
+						<h:outputText value="Endereco da Unidade" />
+						<p:inputText value="#{unidadeBean.unidade.endereco}"
+							label="endereco" />
+
+						<h:outputText value="Data de Cadastro:" />
+						<p:inputMask value="#{unidadeBean.unidade.dataCadastro}"
+							label="dt_nasciment" mask="99/99/9999" readonly="true">
+							<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+						</p:inputMask>
+
+						<h:outputText value="Status da Unidade" />
+						<p:inputText value="#{unidadeBean.unidade.status}" label="status"
+							readonly="true" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Modificar"
+						action="#{unidadeBean.modificar}" ajax="false" update="growl"
+						process="@this" />
+					<p:commandButton value="Desativar"
+						action="#{unidadeBean.desativar}" ajax="false" update="growl"
+						process="@this" />
+
+				</p:panel>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

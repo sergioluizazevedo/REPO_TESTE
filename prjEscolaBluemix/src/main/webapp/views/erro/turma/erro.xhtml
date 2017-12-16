@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<meta charset="utf-8" />
+	<title>Erro ao Tentar Realizar Operacao</title>
+</h:head>
+
+<h:body>
+	<h2>Erro!</h2>
+
+	<h3>Nao foi possivel realizar a operacao.</h3>
+	<p>Erro: <h:outputText value="#{turmaBean.ultimaExcecao.message}"/></p>
+
+	<h:button value="Todas as Tarefas" outcome="/views/tarefas/turma/tarefas.xhtml" />
+
+</h:body>
+</html>

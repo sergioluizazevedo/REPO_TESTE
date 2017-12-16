@@ -1,0 +1,78 @@
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="conteudo">
+		<h:body>
+			<h2>Turma Modificada</h2>
+			<h3>A Turma, #{turmaBean.turma.nome}, foi modificada com sucesso</h3>
+
+			<h:form>
+				<p:panel id="panel" header="Turma Modificada"
+					style="margin-bottom:10px;">
+					<h:panelGrid columns="2" cellpadding="5">
+
+						<h:outputLabel value="Id da Unidade" for="idUnidade" />
+						<p:inputText id="idUnidade" value="#{turmaBean.turma.unidade.id}"
+							readonly="true" />
+
+						<h:outputLabel value="Id da Turma" for="idTurma" />
+						<p:inputText id="idTurma" value="#{turmaBean.turma.id}"
+							readonly="true" />
+
+						<h:outputLabel value="Nome da Turma" for="nome" />
+						<p:inputText id="nome" value="#{turmaBean.turma.nome}"
+							readonly="true" />
+
+						<h:outputLabel value="Status da Turma" for="inputStatus" />
+						<p:inputText id="inputStatus" value="#{turmaBean.turma.status}"
+							readonly="true" />
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
+<!-- 
+
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="conteudo">
+		<h:body>
+			<h2>Turma Modificada</h2>
+			<h3>A Turma, #{turmaBean.unidade.nome}, foi modificada com
+				sucesso</h3>
+
+			<h:form>
+				<p:panel id="panel" header="Turma Modificada"
+					style="margin-bottom:10px;">
+					<h:panelGrid columns="2" cellpadding="5">
+						
+						<h:outputLabel value="Id da Unidade" for="idUnidade" />
+						<p:inputText id="idUnidade"
+							value="#{turmaBean.turmaCadastrada.unidade.id}" readonly="true" />
+						
+						<h:outputLabel value="Id da Turma" for="idTurma" />	
+						<p:inputText id="idTurma" value="#{turmaBean.turmaCadastrada.id}"
+							readonly="true" />
+							
+						<h:outputLabel value="Nome da Turma" for="nome" />
+						<p:inputText id="nome"
+							value="#{turmaBean.turmaCadastrada.nome}" readonly="true" />
+
+						<h:outputLabel value="Status da Turma" for="inputStatus" />
+						<p:inputText id="inputStatus"
+							value="#{turmaBean.turmaCadastrada.status}" readonly="true" />
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
+ -->

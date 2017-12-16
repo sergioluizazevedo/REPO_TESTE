@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+	<!-- Menu Primefaces -->
+	<h:form>
+		<p:growl id="messages" />
+
+		<p:menubar>
+			<p:menuitem value="Home" icon="ui-icon-document" url="/index.xhtml">
+			</p:menuitem>
+
+			<p:submenu label="Unidade" icon="ui-icon-pencil">
+				<p:menuitem value="Buscar" url="/views/unidade/buscar.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+
+				<p:menuitem value="BuscarTodas"
+					url="/views/unidade/buscarTodos.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+
+				<p:menuitem value="Adicionar" url="/views/unidade/adicionar.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+
+			<p:submenu label="Turma" icon="ui-icon-pencil">
+				<p:menuitem value="Buscar" url="/views/turma/buscar.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+
+				<p:menuitem value="BuscarTodas" url="/views/turma/buscarTodos.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+
+				<p:menuitem value="Adicionar" url="/views/turma/adicionar.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+				<p:menuitem value="Relatorios" url="#"
+					icon="ui-icon-arrowreturnthick-1-e" />
+			</p:submenu>
+
+			<p:submenu label="Aluno" icon="ui-icon-pencil">
+				<p:menuitem value="Buscar" url="/views/aluno/buscar.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+
+				<p:menuitem value="BuscarTodos" url="/views/aluno/buscarTodos.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+
+				<p:menuitem value="Adicionar" url="/views/aluno/adicionar.xhtml"
+					icon="ui-icon-addAluno" />
+
+				<p:menuitem value="Matricular" url="/views/aluno/matricular.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+
+			<p:submenu label="Relatorios" icon="ui-icon-pencil">
+				<p:menuitem value="Buscar Todas as Contas a Receber do Aluno"
+					url="/views/parcela/buscarContasAreceberDoAluno.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+					<p:menuitem value="Buscar Todas as Contas Recebidas do Aluno"
+					url="/views/parcela/buscarContasRecebidasDoAluno.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Buscar Todas as Contas a Receber dos Alunos"
+					url="/views/parcela/buscarContasAreceber.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Buscar Todas as Contas Recebidas dos Alunos"
+					url="/views/parcela/buscarContasRecebidas.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Buscar todas as Contas recebidas Hoje"
+					url="/views/parcela/buscarContasRecebidasHoje.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+
+			<p:submenu label="Ajuda" icon="ui-icon-help">
+				<p:menuitem value="Sobre..." url="#{alunoBean.adicionar()}" />
+			</p:submenu>
+		</p:menubar>
+	</h:form>
+	<hr />
+</body>
+</html>

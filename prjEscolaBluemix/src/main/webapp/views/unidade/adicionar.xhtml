@@ -1,0 +1,48 @@
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<f:metadata>
+		<f:viewAction action="#{unidadeBean.adicionar()}" />
+	</f:metadata>
+	<ui:define name="conteudo">
+		<h:body>
+			<h:form>
+				<p:growl id="growl" sticky="true" showDetail="true" />
+				<p:wizard flowListener="#{unidadeBean.onFlowProcess}"
+					nextLabel="Avançar" backLabel="Voltar" styleClass="tabs">
+					<p:tab id="unidade" title="Detalhes da Unidade">
+						<p:panel header="Adicionar Unidade" style="margin-bottom:10px;">
+							<p:messages />
+							<h:panelGrid columns="2" columnClasses="label, value">
+								<h:outputText value="Nome da Unidade:* " />
+								<p:inputText value="#{unidadeBean.unidade.nome}" label="nome"
+									required="true">
+								</p:inputText>
+								<h:outputText value="Endereço da Unidade:" />
+								<p:inputText value="#{unidadeBean.unidade.endereco}"
+									label="endereco" required="true">
+								</p:inputText>
+							</h:panelGrid>
+						</p:panel>
+					</p:tab>
+					<p:tab id="confirmar" title="Confirmar Dados">
+						<p:panel header="Adicionando Unidade" style="margin-bottom:10px;">
+							<h:panelGrid columns="2" columnClasses="label, value">
+								<h:outputText value="Nome da Unidade" />
+								<p:inputText value="#{unidadeBean.unidade.nome}" label="nome"
+									readonly="true" />
+								<h:outputText value="Endereço da Unidade" />
+								<p:inputText value="#{unidadeBean.unidade.endereco}"
+									label="endereco" readonly="true" />
+							</h:panelGrid>
+							<p:commandButton value="Salvar" action="#{unidadeBean.salvar}"
+								update="growl" process="@this" />
+						</p:panel>
+					</p:tab>
+				</p:wizard>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

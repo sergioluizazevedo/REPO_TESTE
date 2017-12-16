@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta charset="utf-8" />
+	<title>Lista de Tarefas Universal</title>
+</h:head>
+<h:body>
+
+	<h1>Lista de Tarefas Universais:</h1>
+
+	<h:panelGrid columns="3">
+
+		<h:button value="LISTA DE TAREFAS DE UNIDADE"
+			outcome="/views/tarefas/unidade/tarefas.xhtml" />
+
+		<h:button value="LISTA DE TAREFAS DE TURMA"
+			outcome="/views/tarefas/turma/tarefas.xhtml" />
+
+		<h:button value="LISTA DE TAREFAS DE ALUNO"
+			outcome="/views/tarefas/aluno/tarefas.xhtml" />
+
+	</h:panelGrid>
+	<hr />
+</h:body>
+</html>

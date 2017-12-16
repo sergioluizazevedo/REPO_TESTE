@@ -1,0 +1,85 @@
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="conteudo">
+		<h:body>
+			<h:form>
+				<p:panel header="Essas sao as Contas a Receber do aluno"
+					style="margin-bottom:10px;">
+					<p:dataTable var="parcela" value="#{parcelaBean.parcelas}"
+						rows="10" paginator="true"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10,15">
+
+						<p:column headerText="ID da Parcela" width="1%">
+							<h:outputText value="#{parcela.id}" />
+						</p:column>
+
+						<p:column headerText="Aluno ID" width="1%">
+							<h:outputText value="#{parcela.aluno.id}" />
+						</p:column>
+
+						<p:column headerText="Matricula" width="1%">
+							<h:outputText value="#{parcela.aluno.matricula}" />
+						</p:column>
+
+						<p:column headerText="Nome" width="1%">
+							<h:outputText value="#{parcela.aluno.nome}" />
+						</p:column>
+
+						<p:column headerText="Total de Parcela" width="1%">
+							<h:outputText value="#{parcela.qtdTotalDeParcela}" />
+						</p:column>
+
+
+						<p:column headerText="Numero da Parcela Curso" width="1%">
+							<h:outputText value="#{parcela.numeroDaParcelaCurso}" />
+						</p:column>
+
+						<p:column headerText="Numero da Parcela Material" width="1%">
+							<h:outputText value="#{parcela.numeroDaParcelaMaterial}" />
+						</p:column>
+
+						<p:column headerText="Vencimento" width="1%">
+							<h:outputText value="#{parcela.dataVencimento.time}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</p:column>
+
+						<p:column headerText="Valor Pago" width="1%">
+							<h:outputText value="#{parcela.valorPago}">
+								<f:convertNumber type="currency" locale="pt_BR" />
+							</h:outputText>
+						</p:column>
+
+						<p:column headerText="Data Pagamento" width="1%">
+							<h:outputText value="#{parcela.dataPagamento.time}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</p:column>
+
+						<p:column headerText="Valor Parcela Curso" width="1%">
+							<h:outputText value="#{parcela.valorParcelaCurso}">
+								<f:convertNumber type="currency" locale="pt_BR" />
+							</h:outputText>
+						</p:column>
+
+						<p:column headerText="Valor Parcela Material" width="1%">
+							<h:outputText value="#{parcela.valorParcelaMaterial}">
+								<f:convertNumber type="currency" locale="pt_BR" />
+							</h:outputText>
+						</p:column>
+
+						<p:column headerText="Valor Total Parcelado" width="1%">
+							<h:outputText value="#{parcela.valorTotalParcelado}">
+								<f:convertNumber type="currency" locale="pt_BR" />
+							</h:outputText>
+						</p:column>
+					</p:dataTable>
+				</p:panel>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

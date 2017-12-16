@@ -1,0 +1,101 @@
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="conteudo">
+		<h:body>
+			<h2>Aluno Matriculado</h2>
+			<h3>O Aluno, #{alunoBean.alunoMatriculado.nome}, foi Matriculado
+				com sucesso</h3>
+			<h:form>
+				<p:panel header="Matriculando Aluno" style="margin-bottom:10px;">
+					<h:panelGrid columns="2" columnClasses="label, value">
+
+						<h:outputText value="Taxa da Matricula:" />
+						<p:inputText
+							value="#{alunoBean.alunoMatriculado.valorTaxaMatricula}"
+							label="valorTaxaMatricula" readonly="true">
+							<f:convertNumber type="currency" locale="pt_BR" />
+						</p:inputText>
+
+						<h:outputText value="valor do Curso" />
+						<p:inputText value="#{alunoBean.alunoMatriculado.valorCurso}"
+							label="valorCurso" readonly="true">
+							<f:convertNumber type="currency" locale="pt_BR" />
+						</p:inputText>
+
+						<h:outputText value="Desconto do Curso (%)" />
+						<p:inputText
+							value="#{alunoBean.alunoMatriculado.porCentoDesconto}"
+							label="descontoCurso" readonly="true" />
+
+						<h:outputText value="Parcelas do Curso:" />
+						<p:inputText
+							value="#{alunoBean.alunoMatriculado.qtdParcelasCurso}"
+							label="qtdParcelasCurso" readonly="true" />
+
+						<h:outputText value="valor do Material" />
+						<p:inputText value="#{alunoBean.alunoMatriculado.valorMaterial}"
+							label="valorMaterial" readonly="true">
+							<f:convertNumber type="currency" locale="pt_BR" />
+						</p:inputText>
+
+						<h:outputText value="Parcelas do Material" />
+						<p:inputText
+							value="#{alunoBean.alunoMatriculado.qtdParcelasMaterial}"
+							label="qtdParcelasMaterial" readonly="true" />
+
+						<h:outputText value="Desconto em Reais" />
+						<p:inputText
+							value="#{alunoBean.alunoMatriculado.valorDescontoReais}"
+							label="valorDescontoReais" readonly="true">
+							<f:convertNumber type="currency" locale="pt_BR" />
+						</p:inputText>
+
+						<h:outputText value="Curso com Desconto " />
+						<p:inputText
+							value="#{alunoBean.alunoMatriculado.valorCursoComDesconto}"
+							label="valorCursoComDesconto" readonly="true">
+							<f:convertNumber type="currency" locale="pt_BR" />
+						</p:inputText>
+
+						<h:outputText value="Valor Residual do Curso" />
+						<p:inputText
+							value="#{alunoBean.alunoMatriculado.valorResidualParcelaCurso}"
+							label="valorResidualParcelaCurso" readonly="true">
+							<f:convertNumber type="currency" locale="pt_BR" />
+						</p:inputText>
+
+						<h:outputText value="Valor Residual do Material" />
+						<p:inputText
+							value="#{alunoBean.alunoMatriculado.valorResidualParcelaMaterial}"
+							label="valorResidualParcelaMaterial" readonly="true">
+							<f:convertNumber type="currency" locale="pt_BR" />
+						</p:inputText>
+
+						<h:outputText value="Data da Matricula" />
+						<p:inputMask value="#{alunoBean.alunoMatriculado.dataMatricula}"
+							label="dataMatricula" mask="99/99/9999" readonly="true">
+							<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+						</p:inputMask>
+
+						<h:outputText value="Forma de Pagamento" />
+						<p:inputText
+							value="#{alunoBean.alunoMatriculado.formaDePagamento}"
+							label="formaPagamento" readonly="true" />
+
+
+						<h:outputText value="Matricula" />
+						<p:inputText value="#{alunoBean.alunoMatriculado.matricula}"
+							label="matricula" readonly="true" />
+
+						<h:outputText value="Status" />
+						<p:inputText value="#{alunoBean.alunoMatriculado.status}"
+							label="status" readonly="true" />
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

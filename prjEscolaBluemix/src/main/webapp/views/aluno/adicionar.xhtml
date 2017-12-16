@@ -1,0 +1,180 @@
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<f:metadata>
+		<f:viewAction action="#{alunoBean.adicionar()}" />
+	</f:metadata>
+	<ui:define name="conteudo">
+		<h:body>
+			<h:form>
+				<p:growl id="growl" sticky="true" showDetail="true" />
+				<p:wizard flowListener="#{alunoBean.onFlowProcess}"
+					nextLabel="Avancar" backLabel="Voltar" styleClass="tabs">
+					<p:tab id="cadastro" title="Dados Pessoais">
+						<p:panel header="Adicionando Aluno" style="margin-bottom:10px;">
+							<p:messages />
+							<h:panelGrid columns="2" columnClasses="label, value"
+								styleClass="grid">
+
+								<h:outputText value="Id da Turma:* " />
+								<p:inputText value="#{alunoBean.aluno.turma.id}" required="true"
+									label="id" />
+
+								<h:outputText value="Nome da Aluno" />
+								<p:inputText value="#{alunoBean.aluno.nome}" label="nome"
+									required="true" />
+
+								<h:outputText value="pai" />
+								<p:inputText value="#{alunoBean.aluno.pai}" label="pai" />
+
+								<h:outputText value="mae" />
+								<p:inputText value="#{alunoBean.aluno.mae}" label="mae" />
+
+								<h:outputText value="Data Nascimento*:" />
+								<p:calendar required="true"
+									value="#{alunoBean.aluno.dataNascimento}" label="nascimento"
+									pattern="dd.MM.yyyy" mode="popup" showOn="button"
+									popupIconOnly="true" navigator="true" mask="99.99.9999" />
+
+								<h:outputText value="sexo: " />
+								<p:selectOneRadio id="sexo" value="#{alunoBean.aluno.sexo}">
+									<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+									<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+								</p:selectOneRadio>
+
+								<h:outputText value="Cpf*:" />
+								<p:inputMask required="true" value="#{alunoBean.aluno.cpf}"
+									mask="999.999.999-99" label="cpf" />
+
+								<h:outputText value="rg" />
+								<p:inputMask value="#{alunoBean.aluno.rg}" label="rg"
+									mask="99.999.999-9" />
+
+								<h:outputText value="orgaoExp" />
+								<p:inputText value="#{alunoBean.aluno.orgaoExp}"
+									label="orgaoExp" />
+
+								<h:outputText value="ufRg" />
+								<p:inputText value="#{alunoBean.aluno.ufRg}" label="ufRg" />
+
+								<h:outputText value="celular: " />
+								<p:inputMask value="#{alunoBean.aluno.celular}" label="celular"
+									mask="(999)99999-9999" />
+
+								<h:outputText value="telefone: " />
+								<p:inputMask value="#{alunoBean.aluno.telefone}"
+									label="telefone" mask="(999)9999-9999" />
+
+								<h:outputText value="email:" />
+								<p:inputText value="#{alunoBean.aluno.email}" label="email" />
+
+								<h:outputText value="cep" />
+								<p:inputMask value="#{alunoBean.aluno.cep}" label="cep"
+									mask="99999-999" />
+
+								<h:outputText value="endereco" />
+								<p:inputText value="#{alunoBean.aluno.endereco}"
+									label="endereco" />
+
+								<h:outputText value="bairro" />
+								<p:inputText value="#{alunoBean.aluno.bairro}" label="bairro" />
+
+								<h:outputText value="cidade" />
+								<p:inputText value="#{alunoBean.aluno.cidade}" label="cidade" />
+
+								<h:outputText value="estado" />
+								<p:inputText value="#{alunoBean.aluno.estado}" label="estado" />
+
+							</h:panelGrid>
+						</p:panel>
+					</p:tab>
+					<p:tab id="confirmar" title="Confirmar Dados">
+						<p:panel header="Adicionando Aluno" style="margin-bottom:10px;">
+							<h:panelGrid columns="2" columnClasses="label, value">
+
+								<h:outputText value="Id da Turma:" />
+								<p:inputText value="#{alunoBean.aluno.turma.id}" label="id"
+									readonly="true" />
+
+								<h:outputText value="Nome da Aluno" />
+								<p:inputText value="#{alunoBean.aluno.nome}" label="nome"
+									readonly="true" />
+
+								<h:outputText value="sexo do Aluno" />
+								<p:inputText value="#{alunoBean.aluno.sexo}" label="sexo"
+									readonly="true" />
+
+								<h:outputText value="Data Nascimento*:" />
+								<p:inputMask value="#{alunoBean.aluno.dataNascimento}"
+									label="nascimento;" mask="99/99/9999" readonly="true">
+									<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+								</p:inputMask>
+
+								<h:outputText value=" pai" />
+								<p:inputText value="#{alunoBean.aluno.pai}" label="outputLabel"
+									readonly="true" />
+
+								<h:outputText value="mae" />
+								<p:inputText value="#{alunoBean.aluno.mae}" label="mae"
+									readonly="true" />
+
+								<h:outputText value="cpf:" />
+								<p:inputMask value="#{alunoBean.aluno.cpf}" label="cpf"
+									mask="999.999.999-99" readonly="true" />
+
+								<h:outputText value="rg" />
+								<p:inputText value="#{alunoBean.aluno.rg}" label="rg"
+									mask="99.999.999-9" readonly="true" />
+
+								<h:outputText value="orgaoExp" />
+								<p:inputText value="#{alunoBean.aluno.orgaoExp}"
+									label="orgaoExp" readonly="true" />
+
+								<h:outputText value="ufRg" />
+								<p:inputText value="#{alunoBean.aluno.ufRg}" label="ufRg"
+									readonly="true" />
+
+								<h:outputText value="celular" />
+								<p:inputMask value="#{alunoBean.aluno.celular}" label="celular"
+									mask="(999) 999-9999" readonly="true" />
+
+								<h:outputText value="telefone" />
+								<p:inputMask value="#{alunoBean.aluno.telefone}"
+									label="telefone" mask="(999) 9999-9999" readonly="true" />
+
+								<h:outputText value="email" />
+								<p:inputText value="#{alunoBean.aluno.email}" label="email"
+									readonly="true" />
+
+								<h:outputText value="cep" />
+								<p:inputText value="#{alunoBean.aluno.cep}" label="cep"
+									readonly="true" mask="99999-999" />
+
+								<h:outputText value="endereco" />
+								<p:inputText value="#{alunoBean.aluno.endereco}"
+									label="endereco" readonly="true" />
+
+								<h:outputText value="bairro" />
+								<p:inputText value="#{alunoBean.aluno.bairro}" label="bairro"
+									readonly="true" />
+
+								<h:outputText value="cidade" />
+								<p:inputText value="#{alunoBean.aluno.cidade}" label="cidade"
+									readonly="true" />
+
+								<h:outputText value="estado" />
+								<p:inputText value="#{alunoBean.aluno.estado}" label="estado"
+									readonly="true" />
+
+							</h:panelGrid>
+							<p:commandButton value="Salvar" action="#{alunoBean.salvar}"
+								update="growl" process="@this" />
+						</p:panel>
+					</p:tab>
+				</p:wizard>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

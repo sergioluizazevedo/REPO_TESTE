@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta charset="utf-8" />
+	<title>Lista de Tarefas Alunos</title>
+</h:head>
+<h:body>
+
+	<h1>Lista de Tarefas disponíveis:</h1>
+
+	<h:panelGrid columns="5">
+
+		<h:button value="ADICIONAR UMA ALUNO"
+			outcome="/views/adicionar/adicionar.xhtml" />
+
+		<h:button value="BUSCAR UMA ALUNO"
+			outcome="/views/buscar/buscar.xhtml" />
+
+		<h:button value="MODIFICAR UMA ALUNO"
+			outcome="/views/modificar/buscar.xhtml" />
+
+		<h:button value="DESATIVAR UMA ALUNO"
+			outcome="/views/desativar/buscar.xhtml" />
+
+		<h:form>
+			<h:commandButton value="BUSCAR TODAS AS ALUNOS"
+				action="#{alunoBean.buscarTodos}">
+			</h:commandButton>
+		</h:form>
+
+	</h:panelGrid>
+	<hr />
+	<h:button value="TAREFAS UNIVERSAIS"
+		outcome="/views/tarefas/tarefasUniversais.xhtml" />
+</h:body>
+</html>

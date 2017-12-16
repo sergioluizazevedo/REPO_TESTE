@@ -1,0 +1,33 @@
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<f:metadata>
+		<f:viewAction action="#{turmaBean.buscarTodos()}" />
+	</f:metadata>
+	<ui:define name="conteudo">
+		<h:body>
+			<h:form>
+				<p:dataTable var="turma" value="#{turmaBean.turmas}" rows="10"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<!--  style="width:2300px;" -->
+					<p:column headerText="Id da Unidade" width="70px;">
+						<h:outputText value="#{turma.unidade.id}" />
+					</p:column>
+					<p:column headerText="Id da Turma" width="70px;">
+						<h:outputText value="#{turma.id}" />
+					</p:column>
+					<p:column headerText="Nome da Unidade" width="70px;">
+						<h:outputText value="#{turma.nome}" />
+					</p:column>					
+					<p:column headerText="Status" width="100px;">
+						<h:outputText value="#{turma.status}" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

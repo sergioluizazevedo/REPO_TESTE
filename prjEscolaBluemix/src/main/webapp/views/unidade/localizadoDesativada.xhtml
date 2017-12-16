@@ -1,0 +1,94 @@
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="conteudo">
+		<h:body>
+			<h2>Unidade Desativada</h2>
+			<h3>A Unidade, #{unidadeBean.unidade.nome}, foi localizada com
+				sucesso, porem esta Unidade esta desativada</h3>
+			<h:form>
+				<p:growl id="growl" sticky="true" showDetail="true" />
+				<p:panel header="Unidade Localizada" style="margin-bottom:10px;">
+					<p:messages />
+					<h:panelGrid columns="2" columnClasses="label, value">
+
+						<h:outputText value="Id do Unidade:* " />
+						<p:inputText value="#{unidadeBean.unidade.id}" required="true"
+							label="idUnidade" disabled="true" />
+
+						<h:outputText value="Nome da Unidade" />
+						<p:inputText value="#{unidadeBean.unidade.nome}" label="nome"
+							disabled="true" />
+
+						<h:outputText value="Endereco da Unidade" />
+						<p:inputText value="#{unidadeBean.unidade.endereco}"
+							label="endereco" disabled="true" />
+
+						<h:outputText value="Data de Cadastro:" />
+						<p:inputMask value="#{unidadeBean.unidade.dataCadastro}"
+							label="dt_nasciment" mask="99/99/9999" disabled="true">
+							<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+						</p:inputMask>
+
+						<h:outputText value="Status da Unidade" />
+						<p:inputText value="#{unidadeBean.unidade.status}" label="status"
+							disabled="true" />
+
+					</h:panelGrid>
+
+				</p:panel>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
+<!-- 
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="conteudo">
+		<h:body>
+			<h2>Unidade Localizada</h2>
+			<h3>O Unidade, #{unidadeBean.unidadeCadastrada.nome}, foi
+				localizada com sucesso</h3>
+			<h:form>
+				<p:growl id="growl" sticky="true" showDetail="true" />
+				<p:wizard flowListener="#{unidadeBean.onFlowProcess}"
+					nextLabel="Avançar" backLabel="Voltar" styleClass="tabs">
+					<p:tab id="unidade" title="Detalhes da Unidade">
+						<p:panel header="Unidade Localizada" style="margin-bottom:10px;">
+							<p:messages />
+							<h:panelGrid columns="2" columnClasses="label, value">
+								<h:outputText value="Id do Unidade:* " />
+								<p:inputText value="#{unidadeBean.unidadeCadastrada.id}"
+									required="true" label="idUnidade" disabled="true"/>
+								<h:outputText value="Nome da Unidade" />
+								<p:inputText value="#{unidadeBean.unidadeCadastrada.nome}"
+									label="nome"  disabled="true"/>
+								<h:outputText value="Endereco da Unidade" />
+								<p:inputText value="#{unidadeBean.unidadeCadastrada.endereco}"
+									label="endereco" disabled="true"/>
+
+								<h:outputText value="Data de Cadastro:" />
+								<p:inputMask
+									value="#{unidadeBean.unidadeCadastrada.dataCadastro}"
+									label="dt_nasciment" mask="99/99/9999" disabled="true">
+									<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+								</p:inputMask>
+								<h:outputText value="Status da Unidade" />
+								<p:inputText value="#{unidadeBean.unidadeCadastrada.status}"
+									label="status" disabled="true"/>
+							</h:panelGrid>
+						
+						</p:panel>
+					</p:tab>
+				</p:wizard>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
+ -->

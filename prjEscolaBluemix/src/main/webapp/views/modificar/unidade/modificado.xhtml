@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<meta charset="utf-8" />
+	<title>Unidade Modificada com Sucesso</title>
+</h:head>
+
+<h:body>
+	<h2>Sucesso!</h2>
+
+	<h3>
+		A Unidade (id=
+		<h:outputText value="#{unidadeBean.idUltimoModificado}" />
+		) foi modificado com sucesso
+	</h3>
+
+	<hr />
+
+	<h:button value="Todas as Tarefas" outcome="/views/tarefas/unidade/tarefas.xhtml" />
+
+</h:body>
+</html>

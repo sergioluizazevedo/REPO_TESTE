@@ -1,0 +1,44 @@
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="conteudo">
+		<h:body>
+			<h2>Unidade Desativada</h2>
+			<h3>A Unidade, #{unidadeBean.unidade.nome}, foi desativada com
+				sucesso</h3>
+
+			<h:form>
+				<p:panel id="panel" header="Unidade Desativada"
+					style="margin-bottom:10px;">
+					<h:panelGrid columns="2" cellpadding="5">
+
+						<h:outputLabel value="Id da Unidade" for="inputId" />
+						<p:inputText id="inputId" value="#{unidadeBean.unidade.id}"
+							disabled="true" />
+
+						<h:outputLabel value="Nome da Unidade" for="inputNome" />
+						<p:inputText id="inputNome" value="#{unidadeBean.unidade.nome}"
+							disabled="true" />
+
+						<h:outputLabel value="Endereço da Unidade" for="inputEndereco" />
+						<p:inputText id="inputEndereco"
+							value="#{unidadeBean.unidade.endereco}" disabled="true" />
+
+						<h:outputLabel value="Data de Cadastro da Unidade" for="inputData" />
+						<p:inputText id="inputData"
+							value="#{unidadeBean.unidade.dataCadastro.time}" disabled="true">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</p:inputText>
+
+						<h:outputLabel value="Status da Unidade" for="inputStatus" />
+						<p:inputText id="inputStatus"
+							value="#{unidadeBean.unidade.status}" disabled="true" />
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,35 @@
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<f:metadata>
+		<f:viewAction action="#{parcelaBean.adicionar()}" />
+	</f:metadata>
+	<ui:define name="conteudo">
+		<h:body>
+			<h:form>
+				<p:panel id="panel" header="Buscar Contas Recebidas"
+					style="margin-bottom:10px;">
+					<p:messages id="messages" />
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputLabel value="Periodo Inicial:" for="inputPi" />
+						<p:calendar required="true" value="#{parcelaBean.parcela.periodo.dataInicio}"
+							label="inputPi" pattern="dd.MM.yyyy" mode="popup"
+							showOn="button" popupIconOnly="true" navigator="true"
+							mask="99.99.9999" />
+
+						<h:outputLabel value="Periodo Final:" for="inputPf" />
+						<p:calendar required="true" value="#{parcelaBean.parcela.periodo.dataFinal}"
+							label="inputPf" pattern="dd.MM.yyyy" mode="popup"
+							showOn="button" popupIconOnly="true" navigator="true"
+							mask="99.99.9999" />
+
+					</h:panelGrid>
+				</p:panel>
+				<p:commandButton value="Buscar"
+					action="#{parcelaBean.buscarContasRecebidas()}" update="panel" />
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

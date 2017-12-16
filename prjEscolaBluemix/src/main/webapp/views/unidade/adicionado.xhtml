@@ -1,0 +1,36 @@
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="conteudo">
+		<h:body>
+			<h2>Unidade Adicionado</h2>
+			<h3>O Unidade, #{unidadeBean.unidade.nome}, foi adicionado com
+				sucesso</h3>
+			<h:form>
+				<p:tab id="confirmar" title="Confirmar Dados">
+					<p:panel header="Adicionando Unidade" style="margin-bottom:10px;">
+						<h:panelGrid id="confirmation" columns="2"
+							columnClasses="label, value">
+							<h:outputText value="Id da Unidade:" />
+							<p:inputText value="#{unidadeBean.unidade.id}" label="id"
+								readonly="true" />
+							<h:outputText value="Nome da Unidade" />
+							<p:inputText value="#{unidadeBean.unidade.nome}" label="nome"
+								readonly="true" />
+							<h:outputText value="endereco" />
+							<p:inputText value="#{unidadeBean.unidade.endereco}"
+								label="endereco" readonly="true" />
+							<h:outputText value="Data de Cadastro" />
+							<p:inputText value="#{unidadeBean.unidade.dataCadastro.time}"
+								label="dataCadastro" readonly="true">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</p:inputText>
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

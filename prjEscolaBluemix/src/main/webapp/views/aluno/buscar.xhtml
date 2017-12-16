@@ -1,0 +1,28 @@
+
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<f:metadata>
+		<f:viewAction action="#{alunoBean.adicionar}" />
+	</f:metadata>
+	<ui:define name="conteudo">
+		<h:body>
+			<h:form>
+				<p:panel id="panel" header="Buscar Aluno"
+					style="margin-bottom:10px;">
+					<p:messages id="messages" />
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputLabel value="Buscar por Id:" for="inputId" />
+						<p:inputText id="inputId" value="#{alunoBean.aluno.id}" />
+						<h:outputLabel value="Buscar por Nome:" for="inputNome" />
+						<p:inputText id="inputNome" value="#{alunoBean.aluno.nome}" />
+					</h:panelGrid>
+				</p:panel>
+				<p:commandButton value="Buscar" action="#{alunoBean.buscar}"
+					update="panel" />
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta charset="utf-8" />
+	<title>Lista de Tarefas Unidade</title>
+</h:head>
+<h:body>
+
+	<h1>Lista de Tarefas disponíveis:</h1>
+
+	<h:panelGrid columns="5">
+
+		<h:button value="ADICIONAR UMA UNIDADE"
+			outcome="/views/adicionar/unidade/adicionar.xhtml" />
+
+		<h:button value="BUSCAR UMA UNIDADE"
+			outcome="/views/buscar/unidade/buscar.xhtml" />
+
+		<h:button value="MODIFICAR UMA UNIDADE"
+			outcome="/views/modificar/unidade/buscar.xhtml" />
+
+		<h:button value="DESATIVAR UMA UNIDADE"
+			outcome="/views/desativar/unidade/buscar.xhtml" />
+
+		<h:form>
+			<h:commandButton value="BUSCAR TODAS AS UNIDADES"
+				action="#{unidadeBean.buscarTodos}">
+			</h:commandButton>
+		</h:form>
+
+	</h:panelGrid>
+	<hr />
+	<h:panelGrid columns="1">
+		<h:button value="TAREFAS UNIVERSAIS"
+			outcome="/views/tarefasUniversais.xhtml" />
+	</h:panelGrid>
+
+</h:body>
+</html>

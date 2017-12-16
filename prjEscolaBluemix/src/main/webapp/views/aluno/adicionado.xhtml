@@ -1,0 +1,107 @@
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="conteudo">
+		<h:body>
+			<h2>Aluno Adicionado</h2>
+			<h3>O Aluno, #{alunoBean.alunoCadastrado.nome}, foi adicionado
+				com sucesso</h3>
+			<h:form>
+				<p:panel header="Adicionando Aluno" style="margin-bottom:10px;">
+					<h:panelGrid columns="2" columnClasses="label, value">
+
+						<h:outputText value="Id da Turma:" />
+						<p:inputText value="#{alunoBean.alunoCadastrado.turma.id}"
+							label="id" readonly="true" />
+
+						<h:outputText value="Id do Aluno:" />
+						<p:inputText value="#{alunoBean.alunoCadastrado.id}" label="id"
+							readonly="true" />
+
+						<h:outputText value="Nome da Aluno" />
+						<p:inputText value="#{alunoBean.alunoCadastrado.nome}"
+							label="nome" readonly="true" />
+
+						<h:outputText value="sexo do Aluno" />
+						<p:inputText value="#{alunoBean.alunoCadastrado.sexo}"
+							label="sexo" readonly="true" />
+
+						<h:outputText value="Data Nascimento*:" />
+						<p:inputMask value="#{alunoBean.alunoCadastrado.dataNascimento}"
+							label="nascimento;" mask="99/99/9999" readonly="true">
+							<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+						</p:inputMask>
+
+						<h:outputText value=" pai" />
+						<p:inputText value="#{alunoBean.alunoCadastrado.pai}"
+							label="outputLabel" readonly="true" />
+
+						<h:outputText value="mae" />
+						<p:inputText value="#{alunoBean.alunoCadastrado.mae}" label="mae"
+							readonly="true" />
+
+						<h:outputText value="cpf:" />
+						<p:inputMask value="#{alunoBean.alunoCadastrado.cpf}" label="cpf"
+							mask="999.999.999-99" readonly="true">
+						</p:inputMask>
+
+						<h:outputText value="rg" />
+						<p:inputMask value="#{alunoBean.alunoCadastrado.rg}" label="rg"
+							mask="99.999.999-9" readonly="true">
+						</p:inputMask>
+
+						<h:outputText value="orgaoExp" />
+						<p:inputText value="#{alunoBean.alunoCadastrado.orgaoExp}"
+							label="orgaoExp" readonly="true" />
+
+						<h:outputText value="ufRg" />
+						<p:inputText value="#{alunoBean.alunoCadastrado.ufRg}"
+							label="ufRg" readonly="true" />
+
+						<h:outputText value="celular" />
+						<p:inputMask value="#{alunoBean.alunoCadastrado.celular}"
+							label="celular" mask="(999) 999-9999" readonly="true">
+						</p:inputMask>
+
+						<h:outputText value="telefone" />
+						<p:inputMask value="#{alunoBean.alunoCadastrado.telefone}"
+							label="telefone" mask="(999) 9999-9999" readonly="true">
+						</p:inputMask>
+
+						<h:outputText value="email" />
+						<p:inputText value="#{alunoBean.alunoCadastrado.email}"
+							label="email" readonly="true" />
+
+						<h:outputText value="cep" />
+						<p:inputMask value="#{alunoBean.alunoCadastrado.cep}" label="cep"
+							readonly="true" mask="99999-999">
+						</p:inputMask>
+
+						<h:outputText value="endereco" />
+						<p:inputText value="#{alunoBean.alunoCadastrado.endereco}"
+							label="endereco" readonly="true" />
+
+						<h:outputText value="bairro" />
+						<p:inputText value="#{alunoBean.alunoCadastrado.bairro}"
+							label="bairro" readonly="true" />
+
+						<h:outputText value="cidade" />
+						<p:inputText value="#{alunoBean.alunoCadastrado.cidade}"
+							label="cidade" readonly="true" />
+
+						<h:outputText value="estado" />
+						<p:inputText value="#{alunoBean.alunoCadastrado.estado}"
+							label="estado" readonly="true" />
+
+						<h:outputText value="Status" />
+						<p:inputText value="#{alunoBean.alunoCadastrado.status}"
+							label="estado" readonly="true" />
+
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

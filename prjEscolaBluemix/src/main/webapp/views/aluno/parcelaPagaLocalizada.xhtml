@@ -1,0 +1,127 @@
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="conteudo">
+		<h:body>
+			<h2>A Conta a Pagar do Aluno,
+				#{alunoBean.relatorioCadastrado.nome} foi paga com sucesso!</h2>
+			<h:form>
+				<h:panelGrid columns="2" columnClasses="label, value">
+					<h:outputText value="Id da Conta a Pagar do Aluno " />
+					<p:inputText value="#{alunoBean.relatorioCadastrado.id}"
+						label="idrelatorioCadastrado" disabled="true" />
+
+					<h:outputText value="Id do Aluno:* " />
+					<p:inputText label="idALuno"
+						value="#{alunoBean.relatorioCadastrado.alunoId}" disabled="true" />
+
+					<h:outputText value="Matricula do Aluno:* " />
+					<p:inputText label="matricula"
+						value="#{alunoBean.relatorioCadastrado.matricula}" disabled="true" />
+
+					<h:outputText value="Nome do Aluno" />
+					<p:inputText label="nome"
+						value="#{alunoBean.relatorioCadastrado.nome}" disabled="true" />
+
+					<h:outputText value="Status" />
+					<p:inputText label="status"
+						value="#{alunoBean.relatorioCadastrado.status}" disabled="true" />
+
+					<h:outputText value="valor do Curso" />
+					<p:inputText value="#{alunoBean.relatorioCadastrado.valorCurso}"
+						label="valorCurso" disabled="true">
+						<f:convertNumber type="currency" locale="pt_BR" />
+					</p:inputText>
+
+					<h:outputText value="Desconto do Curso (%)" />
+					<p:inputText
+						value="#{alunoBean.relatorioCadastrado.descontoPorCento}"
+						label="descontoCurso" disabled="true" />
+
+					<h:outputText value="Curso com Desconto " />
+					<p:inputText
+						value="#{alunoBean.relatorioCadastrado.cursoComDesconto}"
+						label="cursoComDesconto" disabled="true">
+						<f:convertNumber type="currency" locale="pt_BR" />
+					</p:inputText>
+
+					<h:outputText value="valor do Material" />
+					<p:inputText value="#{alunoBean.relatorioCadastrado.valorMaterial}"
+						label="valorMaterial" disabled="true">
+						<f:convertNumber type="currency" locale="pt_BR" />
+					</p:inputText>
+
+					<h:outputText value="Numero da Parcela" />
+					<p:inputText
+						value="#{alunoBean.relatorioCadastrado.numeroDaParcela}"
+						label="numeroDaParcela" disabled="true" />
+
+					<h:outputText value="Numero da Parcela do Curso" />
+					<p:inputText
+						value="#{alunoBean.relatorioCadastrado.numeroDaParcelaCurso}"
+						label="numeroDaParcelaCurso" disabled="true" />
+
+					<h:outputText value="Numero de Parcelas do Curso:" />
+					<p:inputText value="#{alunoBean.relatorioCadastrado.parcelasCurso}"
+						label="parcelasCurso" disabled="true" />
+
+					<h:outputText value="Valor da Parcela do Curso" />
+					<p:inputText value="#{alunoBean.relatorioCadastrado.parcelaCurso}"
+						label="parcelaCurso" disabled="true">
+						<f:convertNumber type="currency" locale="pt_BR" />
+					</p:inputText>
+
+					<h:outputText value="Numero da Parcela do Material" />
+					<p:inputText
+						value="#{alunoBean.relatorioCadastrado.numeroDaParcelaMaterial}"
+						label="numeroDaParcelaMaterial" disabled="true" />
+
+					<h:outputText value="Numero de Parcelas do Material" />
+					<p:inputText
+						value="#{alunoBean.relatorioCadastrado.parcelasMaterial}"
+						label="parcelasMaterial" disabled="true" />
+
+					<h:outputText value="Valor da Parcela do Material" />
+					<p:inputText
+						value="#{alunoBean.relatorioCadastrado.parcelaMaterial}"
+						label="parcelaMaterial" disabled="true">
+						<f:convertNumber type="currency" locale="pt_BR" />
+					</p:inputText>
+
+					<h:outputText value="Valor da Parcela Total" />
+					<p:inputText value="#{alunoBean.relatorioCadastrado.valorParcela}"
+						label="valorParcela" disabled="true">
+						<f:convertNumber type="currency" locale="pt_BR" />
+					</p:inputText>
+
+					<h:outputText value="Data de Vencimento" />
+					<p:inputMask
+						value="#{alunoBean.relatorioCadastrado.dataVencimento}"
+						label="dataVencimento" mask="99/99/9999" disabled="true">
+						<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+					</p:inputMask>
+
+					<h:outputText value="Valor Pago" />
+					<p:inputText value="#{alunoBean.relatorioCadastrado.valorPago}"
+						label="valorPago" disabled="true">
+						<f:convertNumber type="currency" locale="pt_BR"
+							minFractionDigits="2" maxFractionDigits="2" />
+					</p:inputText>
+
+					<h:outputText value="Data do Pagamento" />
+					<p:inputMask value="#{alunoBean.relatorioCadastrado.dataPagamento}"
+						label="dataPagamento" mask="99/99/9999" disabled="true">
+						<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+					</p:inputMask>
+
+					<h:outputText value="Forma de Pagamento" />
+					<p:inputText
+						value="#{alunoBean.relatorioCadastrado.formaDePagamento}"
+						label="formaPagamento" disabled="true" />
+				</h:panelGrid>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

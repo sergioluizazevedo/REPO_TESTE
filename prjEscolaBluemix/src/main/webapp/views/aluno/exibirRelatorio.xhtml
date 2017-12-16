@@ -1,0 +1,134 @@
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="conteudo">
+		<h:body>
+			<h:form>
+				<p:dataTable var="relatorio" value="#{alunoBean.relatorios}"
+					rows="10" paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">				
+
+					<p:column headerText="Id do relatorio:" width="70px;">
+						<h:outputText value="#{re}" />
+					</p:column>
+
+					<p:column headerText="ID do Aluno:" width="70px;">
+						<h:outputText value="#{relatorio.alunoId}" />
+					</p:column>
+
+					<p:column headerText="Numero Da Parcela:" width="70px;">
+						<h:outputText value="#{relatorio.numeroDaParcela}" />
+					</p:column>
+
+					<p:column headerText="numeroDaParcelaCurso:" width="70px;">
+						<h:outputText value="#{relatorio.numeroDaParcelaCurso}" />
+					</p:column>
+
+					<p:column headerText="parcelasCurso:" width="70px;">
+						<h:outputText value="#{relatorio.parcelasCurso}" />
+					</p:column>
+
+					<p:column headerText="numeroDaParcelaMaterial:" width="70px;">
+						<h:outputText value="#{relatorio.numeroDaParcelaMaterial}" />
+					</p:column>
+
+					<p:column headerText="parcelasMaterial:" width="70px;">
+						<h:outputText value="#{relatorio.parcelasMaterial}" />
+					</p:column>
+
+					<p:column headerText="dataVencimento:" width="70px;">
+						<h:outputText value="#{relatorio.dataVencimento.time}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+					</p:column>
+
+					<p:column headerText="valorParcela:" width="70px;">
+						<h:outputText value="#{relatorio.valorParcela}">
+							<f:convertNumber type="currency" locale="pt_BR" />
+					</p:column>
+
+					<p:column headerText="valorPago:" width="70px;">
+						<h:outputText value="#{relatorio.valorPago}">
+							<f:convertNumber type="currency" locale="pt_BR" />
+					</p:column>
+
+					<p:column headerText="dataPagamento:" width="70px;">
+						<h:outputText value="#{relatorio.dataPagamento.time}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="formaDePagamento:" width="70px;">
+						<h:outputText value="#{relatorio.formaDePagamento}" />
+					</p:column>
+
+					<p:column headerText="matricula:" width="70px;">
+						<h:outputText value="#{relatorio.matricula}" />
+					</p:column>
+
+					<p:column headerText="status:" width="70px;">
+						<h:outputText value="#{relatorio.status}" />
+					</p:column>
+
+					<p:column headerText="dataMatricula:" width="70px;">
+						<h:outputText value="#{relatorio.dataMatricula.time}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="valorCurso:" width="70px;">
+						<h:outputText value="#{relatorio.valorCurso}">
+							<f:convertNumber type="currency" locale="pt_BR" />
+					</p:column>
+
+					<p:column headerText="descontoPorCento:" width="70px;">
+						<h:outputText value="#{relatorio.descontoPorCento}" />
+					</p:column>
+
+					<p:column headerText="descontoReais:" width="70px;">
+						<h:outputText value="#{relatorio.descontoReais}">
+							<f:convertNumber type="currency" locale="pt_BR" />
+					</p:column>
+
+					<p:column headerText="cursoComDesconto:" width="70px;">
+						<h:outputText value="#{relatorio.cursoComDesconto}">
+							<f:convertNumber type="currency" locale="pt_BR" />
+					</p:column>
+
+					<p:column headerText="parcelaCurso:" width="70px;">
+						<h:outputText value="#{relatorio.parcelaCurso}">
+							<f:convertNumber type="currency" locale="pt_BR" />
+					</p:column>
+
+					<p:column headerText="residualParcelaCurso:" width="70px;">
+						<h:outputText value="#{relatorio.residualParcelaCurso}">
+							<f:convertNumber type="currency" locale="pt_BR" />
+					</p:column>
+
+					<p:column headerText="taxaMatricula:" width="70px;">
+						<h:outputText value="#{relatorio.taxaMatricula}">
+							<f:convertNumber type="currency" locale="pt_BR" />
+					</p:column>
+
+					<p:column headerText="parcelaMaterial:" width="70px;">
+						<h:outputText value="#{relatorio.parcelaMaterial}">
+							<f:convertNumber type="currency" locale="pt_BR" />
+					</p:column>
+
+					<p:column headerText="residualParcelaMaterial:" width="70px;">
+						<h:outputText value="#{relatorio.residualParcelaMaterial}">
+							<f:convertNumber type="currency" locale="pt_BR" />
+					</p:column>
+
+					<p:column headerText="valorTotalParcelado:" width="70px;">
+						<h:outputText value="#{relatorio.valorTotalParcelado}">
+							<f:convertNumber type="currency" locale="pt_BR" />
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>

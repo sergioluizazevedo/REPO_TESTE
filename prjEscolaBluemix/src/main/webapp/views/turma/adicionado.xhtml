@@ -1,0 +1,72 @@
+
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="conteudo">
+		<h:body>
+			<h2>Turma Adicionada</h2>
+			<h3>A Turma, #{turmaBean.turma.nome}, foi adicionada
+				com sucesso</h3>
+			<h:form>
+				<p:tab id="confirmar" title="Confirmar Dados">
+					<p:panel header="Adicionanda Turma" style="margin-bottom:10px;">
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Id da Unidade:" />
+							<p:inputText value="#{turmaBean.turma.unidade.id}"
+								readonly="true" />
+							<h:outputText value="Id da Turma:" />
+							<p:inputText value="#{turmaBean.turma.id}"
+								readonly="true" />
+							<h:outputText value="Nome da Turma" />
+							<p:inputText value="#{turmaBean.turma.nome}"
+								label="nome" readonly="true" />
+							<h:outputText value="Status da Turma:" />
+							<p:inputText value="#{turmaBean.turma.status}"
+								readonly="true" />
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
+<!--  
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="conteudo">
+		<h:body>
+			<h2>Turma Adicionada</h2>
+			<h3>A Turma, #{turmaBean.turmaCadastrada.nome}, foi adicionada
+				com sucesso</h3>
+			<h:form>
+				<p:tab id="confirmar" title="Confirmar Dados">
+					<p:panel header="Adicionanda Turma" style="margin-bottom:10px;">
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Id da Unidade:" />
+							<p:inputText value="#{turmaBean.turmaCadastrada.unidade.id}"
+								readonly="true" />
+							<h:outputText value="Id da Turma:" />
+							<p:inputText value="#{turmaBean.turmaCadastrada.id}"
+								readonly="true" />
+							<h:outputText value="Nome da Turma" />
+							<p:inputText value="#{turmaBean.turmaCadastrada.nome}"
+								label="nome" readonly="true" />
+							<h:outputText value="Status da Turma:" />
+							<p:inputText value="#{turmaBean.turmaCadastrada.status}"
+								readonly="true" />
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
+
+-->
+
+
