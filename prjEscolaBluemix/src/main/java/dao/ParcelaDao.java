@@ -54,7 +54,7 @@ public class ParcelaDao {
 			stm = conexao.prepareStatement(
 					"select tb_parcela.id, tb_parcela.idAluno, tb_aluno.matricula, tb_aluno.nome, tb_parcela.QtdTotalDeParcela, tb_parcela.numeroDaParcelaCurso, tb_parcela.numeroDaParcelaMaterial, tb_parcela.dataVencimento, tb_parcela.valorPago, tb_parcela.dataPagamento, tb_parcela.ValorParcelaCurso, tb_parcela.ValorParcelaMaterial, tb_parcela.valorTotalParcelado from tb_aluno, tb_parcela where tb_aluno.id = tb_parcela.idAluno and tb_parcela.dataVencimento >= "
 							+ "'" + sdf.format(periodo.getDataInicio()) + "'" + " and tb_parcela.dataVencimento <= "
-							+ "'" + sdf.format(periodo.getDataFinal()) + "'" + " order by dataVencimento");
+							+ "'" + sdf.format(periodo.getDataFinal()) + "'" + " order by dataVencimento, tb_aluno.nome");
 			rs = stm.executeQuery();
 
 			while (rs.next()) {
@@ -120,7 +120,9 @@ public class ParcelaDao {
 			stm = conexao.prepareStatement(
 					"select tb_parcela.id, tb_parcela.idAluno, tb_aluno.matricula, tb_aluno.nome, tb_parcela.QtdTotalDeParcela, tb_parcela.numeroDaParcelaCurso, tb_parcela.numeroDaParcelaMaterial, tb_parcela.dataVencimento, tb_parcela.valorPago, tb_parcela.dataPagamento, tb_parcela.ValorParcelaCurso, tb_parcela.ValorParcelaMaterial, tb_parcela.valorTotalParcelado from tb_aluno, tb_parcela where tb_aluno.id = tb_parcela.idAluno and tb_parcela.dataVencimento >= "
 							+ "'" + sdf.format(periodo.getDataInicio()) + "'" + " and tb_parcela.dataVencimento <= "
-							+ "'" + sdf.format(periodo.getDataFinal()) + "'" + " order by dataVencimento");
+							+ "'" + sdf.format(periodo.getDataFinal()) + "'"
+							+ " order by tb_parcela.dataVencimento, tb_aluno.nome");
+
 			rs = stm.executeQuery();
 
 			while (rs.next()) {
@@ -429,74 +431,57 @@ public class ParcelaDao {
 
 	}
 
-	/*public List<Parcela> buscarContasRecebidasHoje() {
-		Parcela parcela;
-		Aluno aluno;
-		List<Parcela> parcelas = new ArrayList<>();
-		// BigDecimal valorPagoTeste = new BigDecimal("0.00");
-
-		try {
-			stm = conexao.prepareStatement(
-					"select tb_parcela.id, tb_parcela.idAluno, tb_aluno.matricula, tb_aluno.nome, tb_parcela.QtdTotalDeParcela, tb_parcela.numeroDaParcelaCurso, tb_parcela.numeroDaParcelaMaterial, tb_parcela.dataVencimento, tb_parcela.valorPago, tb_parcela.dataPagamento, tb_parcela.ValorParcelaCurso, tb_parcela.ValorParcelaMaterial, tb_parcela.valorTotalParcelado from tb_aluno, tb_parcela");
-			rs = stm.executeQuery();
-
-			while (rs.next()) {
-				java.sql.Date dataSql = rs.getDate("dataPagamento");
-
-				// se existir algum pagamento hoje
-				if (dataSql != null) {
-					// converter data sql para data util
-					java.util.Date datapagamentoUtil = (new java.util.Date(rs.getDate("dataPagamento").getTime()));
-
-					// converter de data util para calendar
-					Calendar dataPagamentoCalendar = Calendar.getInstance();
-
-					dataPagamentoCalendar.setTime(datapagamentoUtil);
-
-					// recuperar a data do do dataDePagamento e testar se é igual a data atual
-					if ((dataPagamentoCalendar.get(Calendar.DAY_OF_MONTH) == Calendar.getInstance()
-							.get(Calendar.DAY_OF_MONTH))
-							& (dataPagamentoCalendar.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH))
-							& (dataPagamentoCalendar.get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR))
-
-					) {
-						// configura o aluno
-						aluno = new Aluno();
-						aluno.setId(rs.getInt("idAluno"));
-						aluno.setMatricula((rs.getString("matricula")));
-						aluno.setNome((rs.getString("nome")));
-						// configuro a parcela
-						parcela = new Parcela();
-						parcela.setId(rs.getInt("id"));
-						parcela.setAluno(aluno);
-						parcela.setQtdTotalDeParcela(rs.getInt("qtdTotalDeParcela"));
-						parcela.setNumeroDaParcelaCurso(rs.getInt("numeroDaParcelaCurso"));
-						parcela.setNumeroDaParcelaMaterial(rs.getInt("numeroDaParcelaMaterial"));
-						parcela.setDataVencimento(new java.util.Date(rs.getDate("dataVencimento").getTime()));
-						Calendar dataVencimento = Calendar.getInstance();
-						dataVencimento.setTime(parcela.getDataVencimento());
-						parcela.setValorPago(rs.getBigDecimal("valorPago"));
-						// java.sql.Date dataPagamento = rs.getDate("dataPagamento");
-						parcela.setDataPagamento(new java.util.Date(rs.getDate("dataPagamento").getTime()));
-						parcela.setValorParcelaCurso(rs.getBigDecimal("valorParcelaCurso"));
-						parcela.setValorParcelaMaterial(rs.getBigDecimal("valorParcelaMaterial"));
-						parcela.setValorTotalParcelado(rs.getBigDecimal("valorTotalParcelado"));
-
-						parcelas.add(parcela);
-					}
-				}
-			}
-		} catch (Exception e) {
-			System.out.println("Ocorreu algum erro no metodo buscarContasRecebidasHoje()");
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-		ConnectionFactory.closeAll(conexao, stm, rs);
-		return parcelas;
-			}
-		*/
-
-
+	/*
+	 * public List<Parcela> buscarContasRecebidasHoje() { Parcela parcela; Aluno
+	 * aluno; List<Parcela> parcelas = new ArrayList<>(); // BigDecimal
+	 * valorPagoTeste = new BigDecimal("0.00");
+	 * 
+	 * try { stm = conexao.prepareStatement(
+	 * "select tb_parcela.id, tb_parcela.idAluno, tb_aluno.matricula, tb_aluno.nome, tb_parcela.QtdTotalDeParcela, tb_parcela.numeroDaParcelaCurso, tb_parcela.numeroDaParcelaMaterial, tb_parcela.dataVencimento, tb_parcela.valorPago, tb_parcela.dataPagamento, tb_parcela.ValorParcelaCurso, tb_parcela.ValorParcelaMaterial, tb_parcela.valorTotalParcelado from tb_aluno, tb_parcela"
+	 * ); rs = stm.executeQuery();
+	 * 
+	 * while (rs.next()) { java.sql.Date dataSql = rs.getDate("dataPagamento");
+	 * 
+	 * // se existir algum pagamento hoje if (dataSql != null) { // converter data
+	 * sql para data util java.util.Date datapagamentoUtil = (new
+	 * java.util.Date(rs.getDate("dataPagamento").getTime()));
+	 * 
+	 * // converter de data util para calendar Calendar dataPagamentoCalendar =
+	 * Calendar.getInstance();
+	 * 
+	 * dataPagamentoCalendar.setTime(datapagamentoUtil);
+	 * 
+	 * // recuperar a data do do dataDePagamento e testar se é igual a data atual if
+	 * ((dataPagamentoCalendar.get(Calendar.DAY_OF_MONTH) == Calendar.getInstance()
+	 * .get(Calendar.DAY_OF_MONTH)) & (dataPagamentoCalendar.get(Calendar.MONTH) ==
+	 * Calendar.getInstance().get(Calendar.MONTH)) &
+	 * (dataPagamentoCalendar.get(Calendar.YEAR) ==
+	 * Calendar.getInstance().get(Calendar.YEAR))
+	 * 
+	 * ) { // configura o aluno aluno = new Aluno();
+	 * aluno.setId(rs.getInt("idAluno"));
+	 * aluno.setMatricula((rs.getString("matricula")));
+	 * aluno.setNome((rs.getString("nome"))); // configuro a parcela parcela = new
+	 * Parcela(); parcela.setId(rs.getInt("id")); parcela.setAluno(aluno);
+	 * parcela.setQtdTotalDeParcela(rs.getInt("qtdTotalDeParcela"));
+	 * parcela.setNumeroDaParcelaCurso(rs.getInt("numeroDaParcelaCurso"));
+	 * parcela.setNumeroDaParcelaMaterial(rs.getInt("numeroDaParcelaMaterial"));
+	 * parcela.setDataVencimento(new
+	 * java.util.Date(rs.getDate("dataVencimento").getTime())); Calendar
+	 * dataVencimento = Calendar.getInstance();
+	 * dataVencimento.setTime(parcela.getDataVencimento());
+	 * parcela.setValorPago(rs.getBigDecimal("valorPago")); // java.sql.Date
+	 * dataPagamento = rs.getDate("dataPagamento"); parcela.setDataPagamento(new
+	 * java.util.Date(rs.getDate("dataPagamento").getTime()));
+	 * parcela.setValorParcelaCurso(rs.getBigDecimal("valorParcelaCurso"));
+	 * parcela.setValorParcelaMaterial(rs.getBigDecimal("valorParcelaMaterial"));
+	 * parcela.setValorTotalParcelado(rs.getBigDecimal("valorTotalParcelado"));
+	 * 
+	 * parcelas.add(parcela); } } } } catch (Exception e) {
+	 * System.out.println("Ocorreu algum erro no metodo buscarContasRecebidasHoje()"
+	 * ); e.printStackTrace(); throw new RuntimeException(e); }
+	 * ConnectionFactory.closeAll(conexao, stm, rs); return parcelas; }
+	 */
 
 	public List<Parcela> buscarContasRecebidasHoje() {
 		Parcela parcela;
@@ -511,12 +496,12 @@ public class ParcelaDao {
 			while (rs.next()) {
 				if (rs.getBigDecimal("valorPago").floatValue() > valorPagoTeste.floatValue()) {
 					System.out.println("Existe Contas pagas");
-					
+
 					aluno = new Aluno();
 					aluno.setId(rs.getInt("id"));
 					aluno.setNome(rs.getString("nome"));
 					aluno.setMatricula(rs.getString("matricula"));
-					
+
 					parcela = new Parcela();
 					parcela.setId(rs.getInt("id"));
 					parcela.setAluno(aluno);
@@ -524,7 +509,7 @@ public class ParcelaDao {
 					parcela.setNumeroDaParcelaCurso(rs.getInt("numeroDaParcelaCurso"));
 					parcela.setNumeroDaParcelaMaterial(rs.getInt("numeroDaParcelaMaterial"));
 					parcela.setDataVencimento(new java.util.Date(rs.getDate("dataVencimento").getTime()));
-					
+
 					Calendar dataVencimento = Calendar.getInstance();
 					dataVencimento.setTime(parcela.getDataVencimento());
 					parcela.setValorPago(rs.getBigDecimal("valorPago"));

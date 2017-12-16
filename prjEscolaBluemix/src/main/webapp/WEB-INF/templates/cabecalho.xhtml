@@ -50,33 +50,91 @@
 				<p:menuitem value="Adicionar" url="/views/aluno/adicionar.xhtml"
 					icon="ui-icon-addAluno" />
 
-				<p:menuitem value="Matricular" url="/views/aluno/matricular.xhtml"
+				<p:menuitem value="Calcular Parcelamento(Matricular)" url="/views/aluno/matricular.xhtml"
 					icon="ui-icon-arrowreturnthick-1-e" />
-
 			</p:submenu>
 
-			<p:submenu label="Relatorios" icon="ui-icon-pencil">
+
+			<p:submenu label="Cancelamento(Aluno)" icon="ui-icon-pencil">
+				<p:menuitem value="Buscar" url="/views/aluno/buscar.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+
+				<p:menuitem value="BuscarTodos" url="/views/aluno/buscarTodos.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+
+				<p:menuitem value="Adicionar" url="/views/aluno/adicionar.xhtml"
+					icon="ui-icon-addAluno" />
+
+				<p:menuitem value="Calcular Parcelamento(Cancelamento)" url="/views/aluno/matricular.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+			</p:submenu>
+
+
+			<p:submenu label="Informações(A Receber/Recebidas) " icon="ui-icon-pencil">
 				<p:menuitem value="Buscar Todas as Contas a Receber do Aluno"
 					url="/views/parcela/buscarContasAreceberDoAluno.xhtml"
 					icon="ui-icon-arrowreturnthick-1-e" />
-					<p:menuitem value="Buscar Todas as Contas Recebidas do Aluno"
-					url="/views/parcela/buscarContasRecebidasDoAluno.xhtml"
-					icon="ui-icon-arrowreturnthick-1-e" />
+
 				<p:menuitem value="Buscar Todas as Contas a Receber dos Alunos"
 					url="/views/parcela/buscarContasAreceber.xhtml"
 					icon="ui-icon-arrowreturnthick-1-e" />
+
+				<p:menuitem value="Buscar Todas as Contas Recebidas do Aluno"
+					url="/views/parcela/buscarContasRecebidasDoAluno.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
 				<p:menuitem value="Buscar Todas as Contas Recebidas dos Alunos"
 					url="/views/parcela/buscarContasRecebidas.xhtml"
 					icon="ui-icon-arrowreturnthick-1-e" />
+	
 				<p:menuitem value="Buscar todas as Contas recebidas Hoje"
 					url="/views/parcela/buscarContasRecebidasHoje.xhtml"
 					icon="ui-icon-arrowreturnthick-1-e" />
-
 			</p:submenu>
+
+
+			<p:submenu label="Contas a Pagar " icon="ui-icon-pencil">
+				<p:menuitem value="Cadastrar(Desps Fixas;Professor;Func.;Diretor)"
+					url="/views/parcela/buscarContasAreceberDoAluno.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+				<p:menuitem value="Gerar Contas(Desps Fixas;Professor;Func.;Diretor)"
+					url="/views/parcela/buscarContasAreceber.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+				<p:menuitem value="Registrar Pagtos(Desps Fixas;Professor;Func.;Diretor)"
+					url="/views/parcela/buscarContasRecebidasDoAluno.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+				<p:menuitem value="Registrar Pagtos(Desps Variaveis)"
+					url="/views/parcela/buscarContasRecebidas.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+					
+				<p:menuitem value="Buscar Contas Em Aberto"
+					url="/views/parcela/buscarContasRecebidasHoje.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+				<p:menuitem value="Buscar Contas Já Pagas"
+					url="/views/parcela/buscarContasRecebidasHoje.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+			</p:submenu>
+
+			<p:submenu label="Informações Financeiras" icon="ui-icon-pencil">
+				<p:menuitem value="Resultado Final Real"
+					url="/views/parcela/buscarContasAreceberDoAluno.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+				<p:menuitem value="Resultado Previsão de Contas"
+					url="/views/parcela/buscarContasAreceber.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+			</p:submenu>
+
 
 			<p:submenu label="Ajuda" icon="ui-icon-help">
 				<p:menuitem value="Sobre..." url="#{alunoBean.adicionar()}" />
 			</p:submenu>
+			
+
 		</p:menubar>
 	</h:form>
 	<hr />
