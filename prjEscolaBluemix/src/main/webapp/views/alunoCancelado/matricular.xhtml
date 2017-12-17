@@ -1,0 +1,110 @@
+<ui:composition template="/WEB-INF/templates/modelo.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<f:metadata>
+		<f:viewAction action="#{alunoCanceladoBean.gerarCancelamento()}" />
+	</f:metadata>
+	<ui:define name="conteudo">
+		<h:body>
+			<h:form>
+				<p:growl id="growl" sticky="true" showDetail="true" />
+				<p:wizard nextLabel="Avancar" backLabel="Voltar" styleClass="tabs">
+					<p:tab id="aluno" title="Detalhes da aluno">
+						<p:panel header="Cancelando o Aluno" style="margin-bottom:10px;">
+							<p:messages />
+							<h:panelGrid columns="2" columnClasses="label, value"
+								styleClass="grid">
+
+								<h:outputText value="Id aluno:" />
+								<p:inputText value="#{alunoCanceladoBean.aluno.id}"
+									label="idAluno" required="true" />
+
+								<h:outputText value="Valor do Cancelamento" />
+								<p:inputText value="#{alunoCanceladoBean.aluno.valorCurso}"
+									label="valorCurso" required="true">
+									<f:convertNumber minFractionDigits="2" maxFractionDigits="2"
+										locale="pt_BR" />
+								</p:inputText>
+
+								<h:outputText value="Percentual de desconto no Cancelamento" />
+								<p:inputText
+									value="#{alunoCanceladoBean.aluno.porCentoDesconto}"
+									label="porCentoDesconto" required="true">
+									<f:convertNumber minFractionDigits="2" maxFractionDigits="2"
+										locale="pt_BR" />
+								</p:inputText>
+
+								<h:outputText value="Numero de Parcelas do Cancelamento" />
+								<p:inputText
+									value="#{alunoCanceladoBean.aluno.qtdParcelasCurso}"
+									label="qtdParcelasCurso" required="true" />
+
+
+								<h:outputText value="Dia do vencimento:*" />
+								<p:inputText value="#{alunoCanceladoBean.aluno.diaVencimento}"
+									label="DiaVencimento" required="true" />
+
+								<h:outputText value="Forma de Pagamento:*" />
+								<p:inputText
+									value="#{alunoCanceladoBean.aluno.formaDePagamento}"
+									label="formaPagamento" required="true" />
+
+							</h:panelGrid>
+						</p:panel>
+					</p:tab>
+
+					<p:tab id="confirmar" title="Confirmar Dados">
+						<p:panel header="Matriculando o Aluno" style="margin-bottom:10px;">
+							<h:panelGrid id="confirmation" columns="5"
+								columnClasses="grid,grid,grid,grid,grid">
+								<h:panelGrid columns="2" columnClasses="label, value">
+
+									<h:outputText value="Id aluno:" />
+									<p:inputText value="#{alunoCanceladoBean.aluno.id}"
+										label="idAluno" required="true" />
+
+									<h:outputText value="Valor do Cancelamento" />
+									<p:inputText value="#{alunoCanceladoBean.aluno.valorCurso}"
+										label="valorCurso" required="true">
+										<f:convertNumber minFractionDigits="2" maxFractionDigits="2"
+											locale="pt_BR" />
+									</p:inputText>
+
+									<h:outputText value="Percentual de desconto no Cancelamento" />
+									<p:inputText
+										value="#{alunoCanceladoBean.aluno.porCentoDesconto}"
+										label="porCentoDesconto" required="true">
+										<f:convertNumber minFractionDigits="2" maxFractionDigits="2"
+											locale="pt_BR" />
+									</p:inputText>
+
+									<h:outputText value="Numero de Parcelas do Cancelamento" />
+									<p:inputText
+										value="#{alunoCanceladoBean.aluno.qtdParcelasCurso}"
+										label="qtdParcelasCurso" required="true" />
+
+
+									<h:outputText value="Dia do vencimento:*" />
+									<p:inputText value="#{alunoCanceladoBean.aluno.diaVencimento}"
+										label="DiaVencimento" required="true" />
+
+									<h:outputText value="Forma de Pagamento:*" />
+									<p:inputText
+										value="#{alunoCanceladoBean.aluno.formaDePagamento}"
+										label="formaPagamento" required="true" />
+
+								</h:panelGrid>
+
+							</h:panelGrid>
+							<p:commandButton value="Submit"
+								action="#{alunoCanceladoBean.matricular}" update="growl"
+								process="@this" />
+						</p:panel>
+					</p:tab>
+				</p:wizard>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
